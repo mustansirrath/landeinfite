@@ -1,0 +1,781 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: normal;
+    src: url("../Fonts/SFUIText-Regular.otf");
+}
+
+@font-face {
+    font-family: bold;
+    src: url("../Fonts/SFUIText-Bold.otf");
+}
+
+@font-face {
+    font-family: heavy;
+    src: url("../Fonts/SFUIText-Heavy.otf");
+}
+
+.navbar{
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 15px;
+    background-color: #03045e;
+}
+
+.logo-img{
+    width: 23rem;
+}
+
+.links-side ul{
+    display: flex;
+}
+
+.links-side ul li{
+    list-style: none;
+    padding: 0px 15px;
+}
+
+.nav-hr{
+    border-color: rgba(211, 211, 211, 0.618);
+    margin: 0px 10px;
+}
+
+.unique{
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: #90e0ef;
+    cursor: pointer;
+}
+
+.links-side ul li a{
+    color: white;
+    font-family: normal;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.hero{
+    width: 100%;
+    height: 75vh;
+    background: rgba(0, 0, 0, 0) url('../Images/banner-LLP-01-01.png');
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.info-hero{
+    width: 50%;
+}
+
+.info-hero h1{
+    font-family: heavy;
+    font-size: 3rem;
+    margin-bottom: 7px;
+}
+
+.info-hero p{
+    font-family: normal;
+    margin-bottom: 7px;
+    color: rgb(63, 63, 63);
+}
+
+.info-hero button{
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-family: normal;
+    background-color: #03045e;
+    color: white;
+    cursor: pointer;
+}
+
+.heroImg{
+    width: 26.5rem;
+}
+
+.courses{
+    width: 100%;
+    height: auto;
+    padding: 4rem 0rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    background-color: #03045e;
+}
+
+.headingC{
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.headingC h2{
+    font-family: bold;
+    color: white;
+    font-size: 2rem
+}
+
+.headingC a{
+    text-decoration: none;
+    color: black;
+    font-family: normal;
+    font-size: 16px;
+    margin-top: 6px;
+    color: white;
+}
+
+.courseBox{
+    border: 1px solid rgba(0, 0, 0, 0.454);
+    width: 26rem;
+    border-radius: 5px;
+    word-wrap: normal;
+    padding: 7px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 20px;
+    background-color: #fff;
+}
+
+.courseBox .courseImg{
+    width: 25rem;
+    object-fit: cover;
+    object-position: center;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.courseBox .infoCourse h3{
+    font-family: bold;
+    color: #03045e;
+    margin-bottom: 5px;
+    font-size: 19px;
+}
+
+.courseBox .infoCourse p{
+    margin-bottom: 7px;
+    font-size: 15px;
+    font-family: bold;
+}
+
+.courseBox p{
+    font-family: normal;
+    font-size: 14px;
+}
+
+.fa-star, .fa-star-half{
+    color: orangered;
+}
+
+.courseBox button{
+    width: 24rem;
+    margin: 15px 0px;
+    padding: 10px 0px;
+    border: none;
+    border-radius: 5px;
+    font-family: normal;
+    background-color: #03045e;
+    color: white;
+    cursor: pointer;
+}
+
+.firstRow{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.testimonials{
+    width: 100%;
+    height: auto;
+    padding: 4rem 0rem;
+    display: flex;
+    flex-direction: column;
+    background-size: cover;
+    background-position: left;
+    background: rgba(0, 0, 0, 0.0) url('../Images/testimonial-bg-01-01.png');
+    background-position: top;
+    background-size: cover;
+}
+
+.headingT{
+    text-align: center;
+}
+
+.headingT h2{
+    font-family: bold;
+    font-size: 2rem;
+    color: black;
+}
+
+.two-sides{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.testimonial-slider {
+    width: 40%;
+    height: 60vh;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  
+  .slider-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .testimonial-card {
+    flex: 0 0 100%;
+    padding: 20px;
+    width: 40%;
+    height: 60vh;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #90e0ef;
+    background: rgba(0, 0, 0, 0.0) url('../Images/quote-01-01.png');
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .testimonial-text {
+    font-size: 17px;
+    font-family: normal;
+    text-align: center;
+    color: #03045e;
+    margin-bottom: 15px;
+  }
+
+  .stars{
+    text-align: center;
+  }
+
+  .testimonial-card hr{
+    margin: 6px 0px;
+    border-color: rgba(211, 211, 211, 0.427);
+  }
+  
+  .testimonial-writer {
+    font-size: 21px;
+    color: black;
+    font-family: normal;
+    margin-bottom: 4px;
+    margin-top: 1rem;
+  }
+
+  .testimonial-writer-location{
+    color: black;
+    font-family: normal;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .testimonial-image img{
+    width: 35rem;
+  }
+
+  .certificate{
+    width: 100%;
+    height: auto;
+    padding: 4rem 0rem;
+    background-color: #ecfcff;
+  }
+
+  .headingCe{
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.headingCe h2{
+    font-family: bold;
+    color: black;
+    font-size: 2rem
+}
+
+  .parts{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  .certiInfo{
+    width: 50%;
+  }
+
+  .certiInfo h3{
+    font-family: bold;
+    font-size: 2rem;
+    margin-bottom: 5px;
+  }
+
+  .certiInfo p{
+    color: rgb(63, 63, 63);
+    font-family: normal;
+  }
+
+  .certificateImg img{
+    width: 40rem;
+  }
+
+  .points{
+    margin-top: 30px;
+  }
+
+  .points p{
+    margin: 20px 0px;
+    color: #03045e;
+    font-size: 16px;
+  }
+
+  .points img{
+    width: 1.1rem;
+    margin-right: 15px;
+  }
+
+  .points div{
+    display: flex;
+    align-items: center;
+  }
+
+  .ctaCerti button{
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-family: normal;
+    background-color: #03045e;
+    color: white;
+    cursor: pointer;
+    margin-left: 2rem;
+  }
+
+  .aboutus{
+    width: 100%;
+    height: 76vh;
+    padding: 4rem 0rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #ecfcff;
+  }
+
+  .heading-about{
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  .heading-about h2{
+    font-family: bold;
+    font-size: 1.4rem;
+  }
+
+  .downpart{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .left-side{
+    width: 50%;
+  }
+
+  .left-side p{
+    font-family: normal;
+    font-size: 19px;
+  }
+
+  .left-side b{
+    color: #03045e;
+  }
+
+  .right-side img{
+    width: 31rem;
+  }
+
+  .vision{
+    width: 100%;
+    height: auto;
+    padding: 4rem 0rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: #090b6f; */
+    background: rgba(0, 0, 0, 0.0) url('../Images/about-bg-01.png');
+    background-size: cover;
+  }
+
+  .heading-vision{
+    margin-bottom: 2rem;
+  }
+
+  .heading-vision h2{
+    font-family: bold;
+    font-size: 2rem;
+    color: white;
+  }
+
+  .twoBoxes{
+    display: flex;
+    justify-content: center;
+  }
+
+  .boxe{
+    border: 1px solid black;
+    width: 40rem;
+    background-color: #90e0ef;
+    height: 30vh;
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+  }
+
+  .imgvision {
+    margin-right: 20px;
+    padding: 10px;
+  }
+  
+  .imgvision img{
+    width: 6rem;
+  }
+  
+  .visiontext h3{
+    font-family: bold;
+    margin-bottom: 6px;
+    font-size: 20px;
+  }
+
+  .visiontext p{
+    font-family: normal;
+  }
+
+  .visiontext{
+    padding: 10px;
+  }
+
+  .team{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 4rem 0rem;
+    align-items: center;
+    justify-content: center;
+    background-image: url('../Images/team-bg-01.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .heading-team{
+    margin-bottom: 2rem;
+  }
+
+  .heading-team h2{
+    font-family: bold;
+    font-size: 2rem;
+  }
+
+  .team-container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  .inside{
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .team-box{
+    border: none;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 5px;
+    background-color: #03045e;
+    margin: 20px;
+    width: 25rem;
+    height: 50vh;
+  }
+
+  .info-team{
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  .info-team h3{
+    font-family: bold;
+    color: #ecfcff;
+  }
+
+  .info-team p{
+    font-family: normal;
+    color: white;
+  }
+
+  .instructor{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .headInstructor{
+    margin-bottom: 1rem;
+  }
+
+  .headInstructor h2{
+    font-family: bold;
+    font-size: 2rem;
+  }
+
+  .faizan-image{
+    width: 12rem;
+  }
+
+  .qualification{
+    color: #03045e;
+    margin: 3px 0px;
+  }
+
+  .info-team hr{
+    margin-bottom: 5px;
+  }
+
+  /* footer code  */
+  footer {
+    background-color: #f3faff;
+    padding: 20px 40px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #333;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-logo {
+    width: 20rem;
+    margin-bottom: 10px;
+}
+
+.footer-section h4 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    font-family: bold;
+    color: #0056b3;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 5px;
+}
+
+.footer-section ul li a {
+    text-decoration: none;
+    color: #333;
+    font-family: normal;
+}
+
+.footer-section ul li a:hover {
+    color: #0056b3;
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 13px;
+    color: #666;
+    font-family: normal;
+}
+
+.footer-bottom a {
+    color: #0056b3;
+    text-decoration: none;
+}
+
+.footer-bottom a:hover {
+    text-decoration: underline;
+}
+
+.footerHR{
+  margin: 10px 0px;
+}
+
+footer i{
+  color: red;
+}
+
+.individual{
+  background-color: #ecfcff;
+}
+
+.individual .headingC h2,a{
+  color: black;
+}
+
+.teach{
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.box1{
+  border: 1px solid rgba(0, 0, 0, 0.413);
+  margin: 15px;
+  padding: 30px;
+  border-radius: 5px;
+  background-color: #90e0ef;
+}
+
+.box1 p{
+  font-family: normal;
+  font-size: 18px;
+}
+
+.teach-text h2{
+  font-family: bold;
+  font-size: 2rem;
+  margin-bottom: 7px;
+}
+
+.teach-text{
+  width: 50%;
+}
+
+.teach-text p{
+  font-family: normal;
+  word-wrap: normal;
+}
+
+.boxes-teach{
+  display: flex;
+  margin-top: 1rem;
+}
+
+.teach-img img{
+  width: 35rem;
+}
+
+.career{
+  width: 100%;
+  height: auto;
+  padding: 3rem 0rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  background-color: #ecfcff;
+}
+
+.careerContainer{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+}
+
+.heading-career{
+  text-align: center;
+}
+
+.heading-career h2{
+  font-family: bold;
+  font-size: 2rem;
+}
+
+.heading-career {
+  font-family: normal;
+}
+
+.inner-career{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.careerBox{
+  border: none;
+  border-radius: 6px;
+  margin: 10px;
+  width: 30rem;
+  height: 30vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: normal;
+}
+
+.Bookkeeper{
+  background: rgba(0, 0, 0, 0.5) url('https://mdtaxattorney.com/wp-content/uploads/2019/07/shutterstock_420780988.jpg');
+  background-size: cover;
+  background-blend-mode: darken;
+}
+
+.accounting{
+  background: rgba(0, 0, 0, 0.5) url('https://www.whizconsulting.net/au/wp-content/uploads/2020/02/How-Can-Hiring-Indian-Accountant-Save.jpg');
+  background-size: cover;
+  background-blend-mode: darken;
+}
+
+.tax{
+  background: rgba(0, 0, 0, 0.5) url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSe3pB_xkPwj4ieoazDHnlLGo20oA7ILw6qCQ&s');
+  background-size: cover;
+  background-blend-mode: darken;
+}
+
+.financial{
+  background: rgba(0, 0, 0, 0.5) url('https://www.edgeip.com/images/FCK/Image/202204/SFG-FinancialAnalyst.jpg');
+  background-size: cover;
+  background-blend-mode: darken;
+}
+
+.quickbooks{
+  background: rgba(0, 0, 0, 0.5) url('https://quickbooks.intuit.com/oidam/intuit/sbseg/en_us/accountants/web/images/zunie-nguyen-0461-brand-photo-25-recertification-proadvisor-qboa-en-us-desktop@2x.jpg');
+  background-size: cover;
+  background-blend-mode: darken;
+}
+
+.corporate{
+  background: rgba(0, 0, 0, 0.5) url('https://www.akounto.com/blog/wp-content/uploads/2022/09/corporate-accounting.jpg');
+  background-size: cover;
+  background-blend-mode: darken;
+}

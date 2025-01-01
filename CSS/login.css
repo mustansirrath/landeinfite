@@ -1,0 +1,151 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: normal;
+    src: url("../Fonts/SFUIText-Regular.otf");
+}
+
+@font-face {
+    font-family: bold;
+    src: url("../Fonts/SFUIText-Bold.otf");
+}
+
+@font-face {
+    font-family: heavy;
+    src: url("../Fonts/SFUIText-Heavy.otf");
+}
+
+
+body {
+    /* background: linear-gradient(to bottom, #a0c4ff, #ffffff);
+    background-image: url('clouds-placeholder.png'); */
+    background: rgba(0, 0, 0, 0.0) url('../Images/gradient-blue-abstract-background-smooth-dark-blue-with-black-vignette-studio.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .login-container {
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .login-card {
+    background: rgb(255, 255, 255);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 30px 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .login-icon img {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 20px;
+  }
+  
+  h2 {
+    margin-bottom: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: bold;
+  }
+  
+  form {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  input {
+    padding: 12px;
+    margin-bottom: 12px;
+    border: 1px solid rgba(85, 85, 85, 0.708);
+    border-radius: 5px;
+    font-size: 14px;
+    background: #f9f9f9;
+    font-family: normal;
+  }
+
+  input:focus{
+    outline: none;
+  }
+  
+  .login-button {
+    padding: 12px;
+    background: #03045e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    font-family: normal;
+    margin-top: 10px;
+  }
+  
+  .login-button:hover {
+    background: #050676;
+  }
+  
+  .divider {
+    margin: 15px 0px;
+    font-size: 13px;
+    text-align: center;
+    font-family: normal;
+    color: #242323;
+  }
+  
+  .social-login {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .social-login button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    font-family: normal;
+  }
+  
+  .social-login .google {
+    background: #4285f4;
+    color: white;
+  }
+
+  .social-login .google:hover{
+    background: #3970ca;
+  }
+  
+  .social-login .facebook {
+    background: #3b5998;
+    color: white;
+  }
+  
+  .social-login .apple {
+    background: black;
+    color: white;
+  }
+  
+  .register-link {
+    margin: 3px 0px;
+    font-size: 13px;
+    font-family: normal;
+  }
+  
+  .register-link a {
+    color: #0066ff;
+    text-decoration: none;
+    font-family: normal;
+}
+  
