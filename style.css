@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+body,html{
+  scroll-behavior: smooth;
+}
+
 @font-face {
     font-family: normal;
     src: url("../Fonts/SFUIText-Regular.otf");
@@ -657,7 +661,7 @@ footer i{
 }
 
 .box1{
-  border: 1px solid rgba(0, 0, 0, 0.413);
+  border: 1px solid rgba(0, 0, 0, 0.17);
   margin: 15px;
   padding: 30px;
   border-radius: 5px;
@@ -778,4 +782,31 @@ footer i{
   background: rgba(0, 0, 0, 0.5) url('https://www.akounto.com/blog/wp-content/uploads/2022/09/corporate-accounting.jpg');
   background-size: cover;
   background-blend-mode: darken;
+}
+
+.gallary{
+  width: 100%;
+  height: auto;
+  padding: 4rem 0rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #03045e;
+}
+
+.heading-gallary{
+  margin-bottom: 2rem;
+}
+
+.heading-gallary h2{
+  font-family: bold;
+  font-size: 2rem;
+  color: white;
+}
+
+.gallary img{
+  width: 40rem;
+  margin: 15px;
+  border-radius: 5px;
 }
