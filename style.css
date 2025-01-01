@@ -810,3 +810,103 @@ footer i{
   margin: 15px;
   border-radius: 5px;
 }
+
+.seperateCourse{
+  width: 100%;
+  height: auto;
+  /* padding: 0rem 1rem; */
+  display: flex;
+  flex-direction: column;
+}
+
+.thumbnailImage{
+  width: 100%;
+  height: 80vh;
+  background-color: #90e0ef;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.4) url('./Images/course-thumbnail.jpg');
+  background-repeat: no-repeat;
+  background-blend-mode: darken;
+  background-size: 100%;
+  background-position: center;
+  margin-bottom: 20px;
+}
+
+.titleandmore{
+  padding: 0rem 1rem;
+  margin-bottom: 20px;
+}
+
+.seperateCourse hr{
+  margin-bottom: 20px;
+  border-color: rgba(128, 128, 128, 0.257);
+}
+
+.description{
+  padding: 0rem 1rem;
+  margin-bottom: 25px;
+}
+
+.titleandmore .title h1{
+  font-family: heavy;
+  color: #03045e;
+}
+
+.titleandmore .more{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3px;
+}
+
+.titleandmore .more .company{
+  font-family: normal;
+  color: gray;
+}
+
+.titleandmore .more .rating{
+  font-family: normal;
+  font-weight: bold;
+}
+
+.description p,li{
+  font-family: normal;
+  font-size: 18px;
+}
+
+.description h2{
+  margin-bottom: 10px;
+  font-family: heavy;
+}
+
+.points-course{
+  padding: 0rem 1rem;
+}
+
+.seperate-box{
+  background: rgba(0, 0, 0, 0.0) url('./Images/gradient-blue-abstract-background-smooth-dark-blue-with-black-vignette-studio.jpg');
+  background-size: cover;
+  background-position: bottom;
+  padding: 20px;
+  margin: 10px 5px;
+  border-radius: 5px;
+  width: 30rem;
+}
+
+.seperate-box h2{
+  font-family: heavy;
+  color: white;
+  font-size: 20px;
+}
+
+.boxes-course{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.seperate-box p{
+  font-family: normal;
+  color: white;
+  margin-top: 5px;
+  font-size: 15px;
+}
