@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,10 +9,12 @@
     <title>Learn and Earn Infinite LLP - Infinite Learning, Infinite Earning</title>
     <script src="./script.js"></script>
 </head>
+
 <body>
     <nav class="navbar">
         <div class="logo-side">
-            <a href="#homepage"><img src="../Images/logo-light-01.png" class="logo-img" alt="Learn and earn infinite LLP"></a>
+            <a href="#homepage"><img src="../Images/logo-light-01.png" class="logo-img"
+                    alt="Learn and earn infinite LLP"></a>
         </div>
         <div class="links-side">
             <ul>
@@ -20,7 +23,14 @@
                 <li><a href="./about.html">About Us</a></li>
                 <li><a href="./contact.html">Contact Us</a></li>
                 <hr class="nav-hr">
-                <li><a href="./register.html"><button class="unique"><i class="fa-regular fa-user"></i>&nbsp;&nbsp;Register</button></a></li>
+                <!-- Add a logout button and registration button -->
+                <li id="logout-btn" style="display: none;">
+                    <a href="javascript:void(0)" onclick="logout()">Logout</a>
+                </li>
+                <li id="register-btn">
+                    <a href="./register.html"><button class="unique"><i
+                                class="fa-regular fa-user"></i>&nbsp;&nbsp;Register</button></a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -31,7 +41,7 @@
             <p>Learn and Earn Infinite LLP is a premier educational institution specializing in accounting and
                 taxation courses tailored for international markets, including the USA, Canada, UK, Australia, and New
                 Zealand.</p>
-                <a href=""><button>Browse Our Courses&nbsp;&nbsp;<i class="fa-solid fa-arrow-right"></i></button></a>
+            <a href=""><button>Browse Our Courses&nbsp;&nbsp;<i class="fa-solid fa-arrow-right"></i></button></a>
         </div>
         <div class="image-hero">
             <img src="../Images/web-bg.png" alt="" class="heroImg">
@@ -50,84 +60,118 @@
                     <div><img src="../Images/course-thumbnail.jpg" alt="" class="courseImg"></div>
                     <div class="infoCourse">
                         <h3>US Individual Tax Essentials: Comprehensive Training for Individual Taxation</h3>
-                        <p>4.3&nbsp;<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half"></i></p>
+                        <p>4.3&nbsp;<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star-half"></i></p>
                     </div>
                     <div>
-                        <p>Learn the essentials of U.S. individual taxation with our comprehensive course. From understanding the basics of taxation and the Internal Revenue Code to preparing Form 1040 accurately, gain the skills and confidence to handle tax returns with ease. Start mastering U.S. taxes today!</p>
+                        <p>Learn the essentials of U.S. individual taxation with our comprehensive course. From
+                            understanding the basics of taxation and the Internal Revenue Code to preparing Form 1040
+                            accurately, gain the skills and confidence to handle tax returns with ease. Start mastering
+                            U.S. taxes today!</p>
                     </div>
                     <div>
-                    <a href="" class="view"><button>View All Details&nbsp;&nbsp;<i class="fa-solid fa-arrow-right"></i></button></a>
-                </div>
+                        <a href="" class="view"><button>View All Details&nbsp;&nbsp;<i
+                                    class="fa-solid fa-arrow-right"></i></button></a>
+                    </div>
                 </div>
                 <div class="courseBox">
                     <div><img src="../Images/course-thumbnail.jpg" alt="" class="courseImg"></div>
                     <div class="infoCourse">
                         <h3>US Corporate Tax Fundamentals: Comprehensive Training for Business Taxation</h3>
-                        <p>4.7&nbsp;<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half"></i></p>
+                        <p>4.7&nbsp;<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star-half"></i></p>
                     </div>
                     <div>
-                        <p>Build a strong foundation in U.S. corporate taxation with our comprehensive course. Learn key principles, explore tax codes for businesses, and master the preparation of forms like 1120, 1120-S, and 1065. Start confidently handling business tax returns today!</p>
+                        <p>Build a strong foundation in U.S. corporate taxation with our comprehensive course. Learn key
+                            principles, explore tax codes for businesses, and master the preparation of forms like 1120,
+                            1120-S, and 1065. Start confidently handling business tax returns today!</p>
                     </div>
                     <div>
-                    <a href="" class="view"><button>View All Details&nbsp;&nbsp;<i class="fa-solid fa-arrow-right"></i></button></a>
-                </div>
+                        <a href="" class="view"><button>View All Details&nbsp;&nbsp;<i
+                                    class="fa-solid fa-arrow-right"></i></button></a>
+                    </div>
                 </div>
                 <div class="courseBox">
                     <div><img src="../Images/course-thumbnail.jpg" alt="" class="courseImg"></div>
                     <div class="infoCourse">
                         <h3>Mastering US Taxes : Individual & Corporate Taxes Essentials</h3>
-                        <p>4.9&nbsp;<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
+                        <p>4.9&nbsp;<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i></p>
                     </div>
                     <div>
-                        <p>Gain a comprehensive understanding of U.S. individual and corporate taxes with this in-depth training. Explore key IRC sections, tax laws, and forms like 1040, 1120, and 1065, with practical exercises and compliance strategies. Build confidence in preparing accurate tax returns for individuals and businesses today!</p>
+                        <p>Gain a comprehensive understanding of U.S. individual and corporate taxes with this in-depth
+                            training. Explore key IRC sections, tax laws, and forms like 1040, 1120, and 1065, with
+                            practical exercises and compliance strategies. Build confidence in preparing accurate tax
+                            returns for individuals and businesses today!</p>
                     </div>
                     <div>
-                    <a href="" class="view"><button>View All Details&nbsp;&nbsp;<i class="fa-solid fa-arrow-right"></i></button></a>
+                        <a href="" class="view"><button>View All Details&nbsp;&nbsp;<i
+                                    class="fa-solid fa-arrow-right"></i></button></a>
+                    </div>
                 </div>
-                </div>
-                
+
             </div>
             <div class="firstRow">
                 <div class="courseBox">
                     <div><img src="../Images/course-thumbnail.jpg" alt="" class="courseImg"></div>
                     <div class="infoCourse">
                         <h3>US Individual Tax Essentials: Comprehensive Training for Individual Taxation</h3>
-                        <p>4.3&nbsp;<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half"></i></p>
+                        <p>4.3&nbsp;<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star-half"></i></p>
                     </div>
                     <div>
-                        <p>Learn the essentials of U.S. individual taxation with our comprehensive course. From understanding the basics of taxation and the Internal Revenue Code to preparing Form 1040 accurately, gain the skills and confidence to handle tax returns with ease. Start mastering U.S. taxes today!</p>
+                        <p>Learn the essentials of U.S. individual taxation with our comprehensive course. From
+                            understanding the basics of taxation and the Internal Revenue Code to preparing Form 1040
+                            accurately, gain the skills and confidence to handle tax returns with ease. Start mastering
+                            U.S. taxes today!</p>
                     </div>
                     <div>
-                    <a href="" class="view"><button>View All Details&nbsp;&nbsp;<i class="fa-solid fa-arrow-right"></i></button></a>
-                </div>
+                        <a href="" class="view"><button>View All Details&nbsp;&nbsp;<i
+                                    class="fa-solid fa-arrow-right"></i></button></a>
+                    </div>
                 </div>
                 <div class="courseBox">
                     <div><img src="../Images/course-thumbnail.jpg" alt="" class="courseImg"></div>
                     <div class="infoCourse">
                         <h3>US Corporate Tax Fundamentals: Comprehensive Training for Business Taxation</h3>
-                        <p>4.7&nbsp;<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half"></i></p>
+                        <p>4.7&nbsp;<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star-half"></i></p>
                     </div>
                     <div>
-                        <p>Build a strong foundation in U.S. corporate taxation with our comprehensive course. Learn key principles, explore tax codes for businesses, and master the preparation of forms like 1120, 1120-S, and 1065. Start confidently handling business tax returns today!</p>
+                        <p>Build a strong foundation in U.S. corporate taxation with our comprehensive course. Learn key
+                            principles, explore tax codes for businesses, and master the preparation of forms like 1120,
+                            1120-S, and 1065. Start confidently handling business tax returns today!</p>
                     </div>
                     <div>
-                    <a href="" class="view"><button>View All Details&nbsp;&nbsp;<i class="fa-solid fa-arrow-right"></i></button></a>
-                </div>
+                        <a href="" class="view"><button>View All Details&nbsp;&nbsp;<i
+                                    class="fa-solid fa-arrow-right"></i></button></a>
+                    </div>
                 </div>
                 <div class="courseBox">
                     <div><img src="../Images/course-thumbnail.jpg" alt="" class="courseImg"></div>
                     <div class="infoCourse">
                         <h3>Mastering US Taxes : Individual & Corporate Taxes Essentials</h3>
-                        <p>4.9&nbsp;<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
+                        <p>4.9&nbsp;<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i></p>
                     </div>
                     <div>
-                        <p>Gain a comprehensive understanding of U.S. individual and corporate taxes with this in-depth training. Explore key IRC sections, tax laws, and forms like 1040, 1120, and 1065, with practical exercises and compliance strategies. Build confidence in preparing accurate tax returns for individuals and businesses today!</p>
+                        <p>Gain a comprehensive understanding of U.S. individual and corporate taxes with this in-depth
+                            training. Explore key IRC sections, tax laws, and forms like 1040, 1120, and 1065, with
+                            practical exercises and compliance strategies. Build confidence in preparing accurate tax
+                            returns for individuals and businesses today!</p>
                     </div>
                     <div>
-                    <a href="" class="view"><button>View All Details&nbsp;&nbsp;<i class="fa-solid fa-arrow-right"></i></button></a>
+                        <a href="" class="view"><button>View All Details&nbsp;&nbsp;<i
+                                    class="fa-solid fa-arrow-right"></i></button></a>
+                    </div>
                 </div>
-                </div>
-                
+
             </div>
         </div>
     </section>
@@ -140,60 +184,78 @@
             <div class="testimonial-image">
                 <img src="../Images/Feedback-rafiki.png" alt="">
             </div>
-        <div class="testimonial-slider">
-            <div class="slider-container">
-              <div class="testimonial-card">
-                <div>
-                <p class="testimonial-text">My time at <b>Learn and Earn Infinite LLP</b> was truly transformative. The faculty were incredibly
-                    knowledgeable and supportive, always going the extra mile to ensure I understood the material.
-                    The curriculum was challenging yet rewarding, pushing me to grow both academically and
-                    personally. I highly recommend Learn and Earn Infinite LLP to anyone seeking a high-quality
-                    training of US Accounts and Taxes and a supportive learning environment.</p>
+            <div class="testimonial-slider">
+                <div class="slider-container">
+                    <div class="testimonial-card">
+                        <div>
+                            <p class="testimonial-text">My time at <b>Learn and Earn Infinite LLP</b> was truly
+                                transformative. The faculty were incredibly
+                                knowledgeable and supportive, always going the extra mile to ensure I understood the
+                                material.
+                                The curriculum was challenging yet rewarding, pushing me to grow both academically and
+                                personally. I highly recommend Learn and Earn Infinite LLP to anyone seeking a
+                                high-quality
+                                training of US Accounts and Taxes and a supportive learning environment.</p>
+                        </div>
+                        <div>
+                            <h4 class="testimonial-writer">Jigar Shah</h4>
+                            <h4 class="testimonial-writer-location">Ahmadabad</h4>
+                            <hr>
+                            <p class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i></p>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div>
+                            <p class="testimonial-text">I came to <b>Learn and Earn Infinite LLP</b> seeking to enhance
+                                my skills and broaden my horizons of
+                                US Tax field. I was truly impressed by the quality of instruction and the dedication of
+                                the faculty
+                                Mr. Dipak Lilani. The Instructors were not only knowledgeable but also passionate about
+                                their
+                                subjects, making learning an engaging and enjoyable experience. The institution provided
+                                a
+                                supportive and collaborative learning environment that fostered my personal and
+                                professional
+                                growth. I am grateful for the opportunities and experiences I gained at L&amp;E Infinite
+                                and highly
+                                recommend it to anyone seeking a rewarding educational journey and wishing to join US/UK
+                                Accounting KPOs.</p>
+                        </div>
+                        <div>
+                            <h4 class="testimonial-writer">Amit Sengar</h4>
+                            <h4 class="testimonial-writer-location">Udaipur</h4>
+                            <hr>
+                            <p class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i></p>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div>
+                            <p class="testimonial-text">I am incredibly grateful for the comprehensive US Accounts
+                                training I received at L&amp;E Infinite,
+                                Ahmedabad. The practical exercises in QBO and QBD and real-world case studies were
+                                invaluable in developing my skills and building my confidence. I feel well-prepared to
+                                tackle US
+                                Accounts challenges in my professional career as they helped me join a reputed KPO in
+                                Ahmedabad Itself. I highly recommend <b>L&amp;E Infinite</b> to anyone seeking to master
+                                US Accounts.</p>
+                        </div>
+                        <div>
+                            <h4 class="testimonial-writer">Ruchi Vora</h4>
+                            <h4 class="testimonial-writer-location">Ahmadabad</h4>
+                            <hr>
+                            <p class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i></p>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                <h4 class="testimonial-writer">Jigar Shah</h4>
-                <h4 class="testimonial-writer-location">Ahmadabad</h4>
-                <hr>
-                <p class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
             </div>
-              </div>
-              <div class="testimonial-card">
-                <div>
-                <p class="testimonial-text">I came to <b>Learn and Earn Infinite LLP</b> seeking to enhance my skills and broaden my horizons of
-                    US Tax field. I was truly impressed by the quality of instruction and the dedication of the faculty
-                    Mr. Dipak Lilani. The Instructors were not only knowledgeable but also passionate about their
-                    subjects, making learning an engaging and enjoyable experience. The institution provided a
-                    supportive and collaborative learning environment that fostered my personal and professional
-                    growth. I am grateful for the opportunities and experiences I gained at L&amp;E Infinite and highly
-                    recommend it to anyone seeking a rewarding educational journey and wishing to join US/UK
-                    Accounting KPOs.</p>
-                </div>
-                <div>
-                    <h4 class="testimonial-writer">Amit Sengar</h4>
-                <h4 class="testimonial-writer-location">Udaipur</h4>
-                <hr>
-                <p class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-            </div>
-              </div>
-              <div class="testimonial-card">
-                <div>
-                <p class="testimonial-text">I am incredibly grateful for the comprehensive US Accounts training I received at L&amp;E Infinite,
-                    Ahmedabad. The practical exercises in QBO and QBD and real-world case studies were
-                    invaluable in developing my skills and building my confidence. I feel well-prepared to tackle US
-                    Accounts challenges in my professional career as they helped me join a reputed KPO in
-                    Ahmedabad Itself. I highly recommend <b>L&amp;E Infinite</b> to anyone seeking to master US Accounts.</p>
-                </div>
-                <div>
-                    <h4 class="testimonial-writer">Ruchi Vora</h4>
-                <h4 class="testimonial-writer-location">Ahmadabad</h4>
-                <hr>
-                <p class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></p>
-            </div>
-              </div>
-            </div>
-          </div>
         </div>
-          
+
     </section>
 
     <section class="certificate">
@@ -204,25 +266,29 @@
         <div class="parts">
             <div class="certiInfo">
                 <h3>How Our Certification Validates Your Professional Competence</h3>
-                <p>Our certification serves as evidence of your extensive knowledge, expertise, and abilities, affirming your qualifications to excel in the professional fields of taxation and accounting.</p>
+                <p>Our certification serves as evidence of your extensive knowledge, expertise, and abilities, affirming
+                    your qualifications to excel in the professional fields of taxation and accounting.</p>
                 <div class="points">
                     <div>
                         <img src="../Images/circle.png" alt="">
                         <p>Be Recognized as a Certified Professional</p>
                     </div>
-                     <div>
+                    <div>
                         <img src="../Images/circle.png" alt="">
                         <p>Strengthen Your Professional Reputation</p>
                     </div>
-                     <div>
+                    <div>
                         <img src="../Images/circle.png" alt="">
-                        <p>Open Doors to Exciting Career Opportunities</p></div>
-                     <div>
+                        <p>Open Doors to Exciting Career Opportunities</p>
+                    </div>
+                    <div>
                         <img src="../Images/circle.png" alt="">
-                        <p>Command Competitive Salaries</p></div>
-                     <div>
+                        <p>Command Competitive Salaries</p>
+                    </div>
+                    <div>
                         <img src="../Images/circle.png" alt="">
-                        <p>Lay a Strong Foundation for Advanced Learning</p></div>
+                        <p>Lay a Strong Foundation for Advanced Learning</p>
+                    </div>
                 </div>
             </div>
 
@@ -236,57 +302,57 @@
     </section>
     <section class="team">
         <div class="heading-team">
-          <h2>Meet our team</h2>
-      </div>
-  
-      <div class="team-container">
-        <div class="mainteam">
-  
-          <div class="inside">
-        <div class="team-box">
-          <div class="image-team">
-            <img src="../Images/Nishant - FOUNDER AND MANAGING PARTNER).png" alt="">
-          </div>
-          <div class="info-team">
-            <h3>Mr. Nishant</h3>
-            <p>Founder and Managing Partner</p>
-          </div>
+            <h2>Meet our team</h2>
         </div>
-  
-        <div class="team-box">
-          <div class="image-team">
-            <img src="../Images/Tarannum - PARTNER AND RESEARCH & TRAINING HEAD.png" alt="">
-          </div>
-          <div class="info-team">
-            <h3>Ms. Tarannum</h3>
-            <p>Partner and Research & Training Head</p>
-          </div>
-        </div>
-      </div>
-      </div>
-  
-      <div class="instructor">
-        <div class="headInstructor">
-          <h2>Our Instructors</h2>
-        </div>
-  
-        <div class="inside">
-        <div class="team-box">
-          <div class="image-team">
-            <img class="faizan-image" src="../Images/Faizan Agoliya - Instructor-01.png" alt="">
-          </div>
-          <div class="info-team">
-            <h3>Mr. Faizan Agoliya</h3>
-            <p class="qualification">EA, CA INTER</p>
-            <hr>
-            <p>Instructor - US Account</p>
-          </div>
-        </div>
-      </div>
-      </div>
-      </section>
 
-      <footer>
+        <div class="team-container">
+            <div class="mainteam">
+
+                <div class="inside">
+                    <div class="team-box">
+                        <div class="image-team">
+                            <img src="../Images/Nishant - FOUNDER AND MANAGING PARTNER).png" alt="">
+                        </div>
+                        <div class="info-team">
+                            <h3>Mr. Nishant</h3>
+                            <p>Founder and Managing Partner</p>
+                        </div>
+                    </div>
+
+                    <div class="team-box">
+                        <div class="image-team">
+                            <img src="../Images/Tarannum - PARTNER AND RESEARCH & TRAINING HEAD.png" alt="">
+                        </div>
+                        <div class="info-team">
+                            <h3>Ms. Tarannum</h3>
+                            <p>Partner and Research & Training Head</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="instructor">
+                <div class="headInstructor">
+                    <h2>Our Instructors</h2>
+                </div>
+
+                <div class="inside">
+                    <div class="team-box">
+                        <div class="image-team">
+                            <img class="faizan-image" src="../Images/Faizan Agoliya - Instructor-01.png" alt="">
+                        </div>
+                        <div class="info-team">
+                            <h3>Mr. Faizan Agoliya</h3>
+                            <p class="qualification">EA, CA INTER</p>
+                            <hr>
+                            <p>Instructor - US Account</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <footer>
         <div class="footer-container">
             <div class="footer-section">
                 <img src="../Images/logo-dark-01.png" alt="Learn and earn infinite LLP" class="footer-logo">
@@ -305,22 +371,62 @@
             <div class="footer-section">
                 <h4>Our Courses</h4>
                 <ul>
-                    <li><a href="#">US Individual Tax Essentials: Comprehensive Training for Individual Taxation</a></li>
+                    <li><a href="#">US Individual Tax Essentials: Comprehensive Training for Individual Taxation</a>
+                    </li>
                     <li><a href="#">US Corporate Tax Fundamentals: Comprehensive Training for Business Taxation</a></li>
                     <li><a href="#">Mastering US Taxes : Individual & Corporate Taxes Essentials</a></li>
                     <li><a href="#">US Accounting Basics to Intermediate : Essential Bookkeeping Training</a></li>
                     <li><a href="#">US Accounting Mastery: Advanced Accounting Training</a></li>
                     <li><a href="#">Mastering US Accounts from Basics through Advanced Level</a></li>
-                    <li><a href="#">Mastering US Taxes & Accounting: Individual, Corporate Taxes & Bookkeeping Essentials</a></li>
+                    <li><a href="#">Mastering US Taxes & Accounting: Individual, Corporate Taxes & Bookkeeping
+                            Essentials</a></li>
                 </ul>
             </div>
         </div>
         <hr class="footerHR">
         <div class="footer-bottom">
             <p>Copyright © 2025 Learn and earn infinite LLP | All rights are reserved to Learn and earn infinite LLP</p>
-            <p>Website Design & Developed with <i class="fa-solid fa-heart"></i> by <a href="https://www.instagram.com/mstdesignagency/">MST Designs</a></p>
+            <p>Website Design & Developed with <i class="fa-solid fa-heart"></i> by <a
+                    href="https://www.instagram.com/mstdesignagency/">MST Designs</a></p>
         </div>
     </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+
+<script src="./FirebaseConfig/firebaseconfig.js"></script>
     
+    <script>
+    //   check the authenication status
+function checkUserStatus() {
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            // User is logged in, show logout button and hide register button
+            document.getElementById("logout-btn").style.display = "block";
+            document.getElementById("register-btn").style.display = "none";
+        } else {
+            // No user is logged in, show register button and hide logout button
+            document.getElementById("logout-btn").style.display = "none";
+            document.getElementById("register-btn").style.display = "block";
+        }
+    });
+}
+
+checkUserStatus();
+
+// Logout function
+function logout() {
+    firebase.auth().signOut().then(function() {
+        // After logout, check the status again
+        checkUserStatus();
+    }).catch(function(error) {
+        console.log('Error logging out:', error);
+    });
+}
+
+    </script>
+
 </body>
+
 </html>

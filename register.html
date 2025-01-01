@@ -20,9 +20,9 @@
         <button class="google"><i class="fa-brands fa-google"></i>&nbsp;&nbsp;Register with Google</button>
       </div>
       <p class="divider">Or</p>
-      <form>
-          <input type="text" placeholder="First Name" required><br>
-          <input type="text" placeholder="Last Name" required><br>
+      <form id="signup-form">
+        <input type="text" placeholder="First Name" required><br>
+        <input type="text" placeholder="Last Name" required><br>
         <input type="email" placeholder="Email" required><br>
         <input type="password" placeholder="Password" required><br>
         <button type="submit" class="signup-button">Sign Up</button>
@@ -30,5 +30,80 @@
       <p class="login-link">Already have an account? <a href="./login.html">Log in</a></p>
     </div>
   </div>
+
+  <!-- Firebase Compatibility Scripts -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+
+  <!-- Firebase Configuration -->
+  <script src="./FirebaseConfig/firebaseconfig.js"></script>
+
+  <script>
+    const signupForm = document.getElementById("signup-form");
+
+    // Handle Signup
+    signupForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const firstName = event.target.elements[0].value;
+      const lastName = event.target.elements[1].value;
+      const email = event.target.elements[2].value;
+      const password = event.target.elements[3].value;
+
+      // Create user with email and password
+      firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+
+          // Store user details in Firestore
+          db.collection("users").doc(user.uid).set({
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            uid: user.uid
+          })
+          .then(() => {
+            // Automatically log the user in after successful sign-up
+            alert(`Welcome, ${firstName} ${lastName}! Your account has been created.`);
+            window.location.href = "./dashboard.html"; // Redirect to the dashboard or home page
+          })
+          .catch((error) => {
+            alert(`Error storing user data in Firestore: ${error.message}`);
+          });
+        })
+        .catch((error) => {
+          alert(`Error: ${error.message}`);
+        });
+    });
+
+    // Handle Google Sign-Up
+    document.querySelector(".google").addEventListener("click", () => {
+      const provider = new firebase.auth.GoogleAuthProvider();
+
+      firebase.auth().signInWithPopup(provider)
+        .then((result) => {
+          const user = result.user;
+
+          //firestore ma users ni details add thase 
+          db.collection("users").doc(user.uid).set({
+            firstName: user.displayName.split(" ")[0],
+            lastName: user.displayName.split(" ")[1] || "",
+            email: user.email,
+            uid: user.uid
+          })
+          .then(() => {
+            //user  Automatically login thase register karya bad
+            alert(`Google Sign-Up Successful! Welcome ${user.displayName}`);
+            window.location.href = "./index.html"; 
+          })
+          .catch((error) => {
+            alert(`Error storing user data in Firestore: ${error.message}`);
+          });
+        })
+        .catch((error) => {
+          alert(`Error: ${error.message}`);
+        });
+    });
+  </script>
 </body>
 </html>
