@@ -19,6 +19,9 @@ h3::selection{
 a::selection{
   background-color: #80b9f6;
 }
+img::selection{
+  background-color: #80b9f6;
+}
 
 body,
 html {
