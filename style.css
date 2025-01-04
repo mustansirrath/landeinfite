@@ -26,6 +26,7 @@ img::selection{
 body,
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 @font-face {
@@ -86,14 +87,20 @@ html {
   font-size: 17px;
 }
 
+.links-side ul li a:hover{
+  color: #90e0ef;
+}
+
 .hero {
   width: 100%;
-  height: 79vh;
+  height: auto;
+  /* padding: 0rem 1rem; */
   background: rgba(0, 0, 0, 0) url("../Images/banner-LLP-01-01.png");
   background-size: cover;
   display: flex;
   align-items: center;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .info-hero {
@@ -124,9 +131,6 @@ html {
 
 .heroImg {
   width: 28rem;
-  height: 100%;
-  object-fit: contain;
-  object-position: center;
 }
 
 .courses {
@@ -253,13 +257,12 @@ html {
 .two-sides {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .testimonial-slider {
-  width: 40%;
-  height: 60vh;
+  width: 70%;
+  height: 100%;
   overflow: hidden;
   border-radius: 8px;
 }
@@ -272,17 +275,20 @@ html {
 .testimonial-card {
   flex: 0 0 100%;
   padding: 20px;
-  width: 40%;
+  width: 60%;
   height: 60vh;
   box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: #90e0ef;
   background: rgba(0, 0, 0, 0) url("../Images/quote-01-01.png");
   background-size: cover;
   background-position: center;
+}
+
+.testimonial-image{
+  width: 40%;
 }
 
 .testimonial-text {
@@ -343,6 +349,7 @@ html {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
 .certiInfo {
@@ -507,6 +514,8 @@ html {
   height: auto;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   padding: 4rem 0rem;
   align-items: center;
   justify-content: center;
@@ -534,6 +543,7 @@ html {
 .inside {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .team-box {
@@ -601,7 +611,7 @@ footer {
   padding: 20px 40px;
   font-family: Arial, sans-serif;
   font-size: 14px;
-  color: #333;
+  color: #03045e;
 }
 
 .footer-container {
@@ -617,12 +627,12 @@ footer {
 }
 
 .footer-logo {
-  width: 20rem;
+  width: 22rem;
   margin-bottom: 10px;
 }
 
 .footer-section h4 {
-  font-size: 16px;
+  font-size: 19px;
   margin-bottom: 10px;
   font-family: bold;
   color: #0056b3;
@@ -631,15 +641,17 @@ footer {
 .footer-section ul {
   list-style: none;
   padding: 0;
+  margin-top: 10px;
 }
 
 .footer-section ul li {
-  margin-bottom: 5px;
+  margin: 15px 0px;
 }
 
 .footer-section ul li a {
   text-decoration: none;
   color: #333;
+  font-size: 16px;
   font-family: normal;
 }
 
