@@ -276,7 +276,7 @@
     }
 }
 
-@media only screen and (max-width: 392px) {
+@media only screen and (max-width: 395px) {
     .info-hero h1 {
         font-family: heavy;
         font-size: 1.4rem;
@@ -295,16 +295,22 @@
     }
 
     .courseBox {
-        width: 20rem;
+        width: 21rem;
     }
 
     .courseBox .courseImg {
-        width: 19rem;
+        width: 20rem;
     }
 
     .courseBox .infoCourse h3 {
-        font-size: 15px;
+        font-size: 17px;
         word-wrap: normal;
+    }
+
+    .headingT h2 {
+        font-family: bold;
+        font-size: 1.8rem;
+        color: black;
     }
 
     .courseBox p {
@@ -319,7 +325,7 @@
     }
 
     .courseBox button {
-        width: 18rem;
+        width: 19rem;
     }
 }
 
@@ -335,7 +341,7 @@
     }
 }
 
-@media only screen and (max-width: 342px) {
+@media only screen and (max-width: 345px) {
     .certiInfo p {
         font-size: 13px;
         font-weight: bold;
