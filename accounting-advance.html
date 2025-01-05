@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./responsive.css">
     <script src="https://kit.fontawesome.com/d3d61f5bb0.js" crossorigin="anonymous"></script>
-    <title>USA Accounting - Individual Course</title>
+    <title>USA Accounting - Advanced Course</title>
 </head>
 <body>
     <section class="form-container">
@@ -17,50 +17,142 @@
             <hr>
 
             <div class="form">
-                <form action="">
+                <!-- Formspree integration: Update form action with the Formspree endpoint -->
+                <form id="enrollForm">
                     <div class="personal">
                         <h3>Personal Information</h3>
-                        <label for="">Full Name</label><br>
-                    <input type="text" name="Full Name" placeholder="Full Name"><br>
-                    <label for="">E-Mail Address</label><br>
-                    <input type="email" name="E-mail Address" placeholder="E-Mail Address"><br>
-                    <label for="">Phone Number</label><br>
-                    <input type="number" name="Mobile Number" placeholder="Phone Number">
-                </div><br>
-                <div class="course-related">
-                    <h3>Course Information</h3>
-                <label for="">Course Name</label><br>
-                    <input type="text" name="Course Name" value="US Accounting Mastery: Advanced Accounting Training" disabled><br>
-                    <label for="">Price</label><br>
-                    <input type="text" name="Course Price" value="14,999" disabled>
-                </div>
-                <div class="address-related">
-                    <h3>Address Information</h3>
-                <label for="">Address</label><br>
-                    <input type="text" name="Address" placeholder="Full Address"><br>
-                    <label for="">City</label><br>
-                    <input type="text" name="City Name" placeholder="City Name"><br>
-                    <label for="">State</label><br>
-                    <input type="text" name="State Name" placeholder="State Name"><br>
-                    <label for="">Country</label><br>
-                    <input type="text" name="Country Name" placeholder="Country Name"><br>
-                </div>
-                <div class="additional-related">
-                    <h3>Additional Information</h3>
-                <label for="">Occupation/Profession</label><br>
-                    <input type="text" name="Occupation/Profession" placeholder="Occupation/Profession"><br>
-                    <label for="">Purpose Of Enrollment</label><br>
-                    <input type="text" name="Purpose Of Enrollment" placeholder="Purpose Of Enrollment"><br>
-                    <label for="">Referral Source</label><br>
-                    <input type="text" name="Referral Source" placeholder="From where you find us?"><br>
-                </div>
+                        <label for="fullName">Full Name</label><br>
+                        <input type="text" id="fullName" name="fullName" placeholder="Full Name" required><br>
+                        <label for="emailAddress">E-Mail Address</label><br>
+                        <input type="email" id="emailAddress" name="email" placeholder="E-Mail Address" required><br>
+                        <label for="phoneNumber">Phone Number</label><br>
+                        <input type="number" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" required>
+                    </div><br>
+                    <div class="course-related">
+                        <h3>Course Information</h3>
+                        <label for="courseName">Course Name</label><br>
+                        <input type="text" id="courseName" name="courseName" value="US Accounting Mastery: Advanced Accounting Training" disabled><br>
+                        <label for="coursePrice">Price</label><br>
+                        <input type="text" id="coursePrice" name="coursePrice" value="14,999" disabled>
+                    </div>
+                    <div class="address-related">
+                        <h3>Address Information</h3>
+                        <label for="address">Address</label><br>
+                        <input type="text" id="address" name="address" placeholder="Full Address" required><br>
+                        <label for="city">City</label><br>
+                        <input type="text" id="city" name="city" placeholder="City Name" required><br>
+                        <label for="state">State</label><br>
+                        <input type="text" id="state" name="state" placeholder="State Name" required><br>
+                        <label for="country">Country</label><br>
+                        <input type="text" id="country" name="country" placeholder="Country Name" required><br>
+                    </div>
+                    <div class="additional-related">
+                        <h3>Additional Information</h3>
+                        <label for="occupation">Occupation/Profession</label><br>
+                        <input type="text" id="occupation" name="occupation" placeholder="Occupation/Profession"><br>
+                        <label for="purpose">Purpose Of Enrollment</label><br>
+                        <input type="text" id="purpose" name="purpose" placeholder="Purpose Of Enrollment"><br>
+                        <label for="referral">Referral Source</label><br>
+                        <input type="text" id="referral" name="referral" placeholder="From where you find us?"><br>
+                    </div>
 
-                <div class="button-form">
-                    <a href=""><button>Checkout Now&nbsp;&nbsp;<i class="fa-regular fa-credit-card"></i></button></a>
-                </div>
+                    <div class="button-form">
+                        <button type="submit">Checkout Now&nbsp;&nbsp;<i class="fa-regular fa-credit-card"></i></button>
+                    </div>
                 </form>
             </div>
         </div>
     </section>
+
+    <!-- Firebase Compatibility Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+
+    <!-- Firebase Configuration -->
+    <script src="./FirebaseConfig/firebaseconfig.js"></script>
+    <script>
+        // Check user authentication
+        firebase.auth().onAuthStateChanged(user => {
+            if (!user) {
+                window.location.href = 'register.html';
+            }
+        });
+
+        // Handle form submission with Firebase, then send an email via Formspree
+        document.getElementById('enrollForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const email = firebase.auth().currentUser.email;
+            if (!email) {
+                alert('User not logged in.');
+                return;
+            }
+
+            const userData = {
+                fullName: document.getElementById('fullName').value,
+                email,
+                phoneNumber: document.getElementById('phoneNumber').value,
+                courseName: document.getElementById('courseName').value,
+                coursePrice: document.getElementById('coursePrice').value,
+                address: document.getElementById('address').value,
+                city: document.getElementById('city').value,
+                state: document.getElementById('state').value,
+                country: document.getElementById('country').value,
+                occupation: document.getElementById('occupation').value,
+                purpose: document.getElementById('purpose').value,
+                referralSource: document.getElementById('referral').value,
+            };
+
+            try {
+                const db = firebase.firestore();
+                const docRef = db.collection("enrolled_users").doc(email);
+
+                const docSnap = await docRef.get();
+                if (docSnap.exists) {
+                    alert("You are already enrolled in this course.");
+                } else {
+                    await docRef.set(userData);
+                    alert("Successfully enrolled in the course!");
+
+                    // Send data to Formspree via email
+                    const formData = new FormData();
+                    formData.append("fullName", userData.fullName);
+                    formData.append("email", userData.email);
+                    formData.append("phoneNumber", userData.phoneNumber);
+                    formData.append("courseName", userData.courseName);
+                    formData.append("coursePrice", userData.coursePrice);
+                    formData.append("address", userData.address);
+                    formData.append("city", userData.city);
+                    formData.append("state", userData.state);
+                    formData.append("country", userData.country);
+                    formData.append("occupation", userData.occupation);
+                    formData.append("purpose", userData.purpose);
+                    formData.append("referral", userData.referralSource);
+
+                    await fetch("https://formspree.io/f/mrbbolwk", {
+                        method: "POST",
+                        body: formData,
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Error sending email: ' + response.statusText);
+                        }
+                        return response.json();
+                    })
+                    .then(() => {
+                        alert("Enrollment confirmation email sent!");
+                    })
+                    .catch(error => {
+                        console.error("Error sending email:", error);
+                        // alert("An error occurred while sending the email. Please try again.");
+                    });
+                }
+            } catch (error) {
+                console.error("Error accessing Firestore: ", error);
+                alert("An error occurred while enrolling. Please try again.");
+            }
+        });
+    </script>
 </body>
 </html>
