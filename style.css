@@ -866,16 +866,102 @@ a {
   margin-bottom: 3rem;
 }
 
-.thumbnailImage {
+
+.individualThumbnail{
   width: 100%;
-  height: 80vh;
+  height: auto;
+  padding: 18rem 0rem;
   background-color: #90e0ef;
   text-align: center;
-  background: rgba(0, 0, 0, 0.4) url("./Images/course-thumbnail.jpg");
+  background: rgba(0, 0, 0, 0.4) url("https://ik.imagekit.io/attje3gmi/Learn%20And%20Earn%20Infinite%20LLP/iloveimg-converted%20(2)/1%20US%20Individual%20Tax%20Essentials%20Comprehensive%20Training%20for%20Individual%20Taxation.jpg?updatedAt=1735968308515");
   background-repeat: no-repeat;
   background-blend-mode: darken;
   background-size: 100%;
-  background-position: center;
+  background-position: top;
+  margin-bottom: 20px;
+}
+
+.corporateThumbnail{
+  width: 100%;
+  height: auto;
+  padding: 18rem 0rem;
+  background-color: #90e0ef;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.4) url("https://ik.imagekit.io/attje3gmi/Learn%20And%20Earn%20Infinite%20LLP/iloveimg-converted%20(2)/2%20US%20Corporate%20Tax%20Fundamentals%20Comprehensive%20Training%20for%20Business%20Taxation.jpg?updatedAt=1735968305471");
+  background-repeat: no-repeat;
+  background-blend-mode: darken;
+  background-size: 100%;
+  background-position: top;
+  margin-bottom: 20px;
+}
+
+.taxescomboThumbnail{
+  width: 100%;
+  height: auto;
+  padding: 18rem 0rem;
+  background-color: #90e0ef;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.4) url("https://ik.imagekit.io/attje3gmi/Learn%20And%20Earn%20Infinite%20LLP/iloveimg-converted%20(2)/3%20Mastering%20US%20Taxes%20%20Individual%20&%20Corporate%20Taxes%20Essentials.jpg?updatedAt=1735968304948");
+  background-repeat: no-repeat;
+  background-blend-mode: darken;
+  background-size: 100%;
+  background-position: top;
+  margin-bottom: 20px;
+}
+
+.accountingThumbnail{
+  width: 100%;
+  height: auto;
+  padding: 18rem 0rem;
+  background-color: #90e0ef;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.4) url("https://ik.imagekit.io/attje3gmi/Learn%20And%20Earn%20Infinite%20LLP/iloveimg-converted%20(2)/4%20US%20Accounting%20Basics%20to%20Intermediate%20%20Essential%20Bookkeeping%20Training.jpg?updatedAt=1735968304019");
+  background-repeat: no-repeat;
+  background-blend-mode: darken;
+  background-size: 100%;
+  background-position: top;
+  margin-bottom: 20px;
+}
+
+.accountingTaxComboThumbnail{
+  width: 100%;
+  height: auto;
+  padding: 18rem 0rem;
+  background-color: #90e0ef;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.4) url("https://ik.imagekit.io/attje3gmi/Learn%20And%20Earn%20Infinite%20LLP/iloveimg-converted%20(2)/7%20Mastering%20USA%20Taxes%20&%20Accounting%20Individual,%20Corporate%20Taxes%20&%20Bookkeeping%20Essentials.jpg?updatedAt=1735968294143");
+  background-repeat: no-repeat;
+  background-blend-mode: darken;
+  background-size: 100%;
+  background-position: top;
+  margin-bottom: 20px;
+}
+
+.accountingComboThumbnail{
+  width: 100%;
+  height: auto;
+  padding: 18rem 0rem;
+  background-color: #90e0ef;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.4) url("https://ik.imagekit.io/attje3gmi/Learn%20And%20Earn%20Infinite%20LLP/iloveimg-converted%20(2)/6%20Mastering%20USA%20Accounts%20from%20Basics%20through%20Advanced%20Level.jpg?updatedAt=1735968295593");
+  background-repeat: no-repeat;
+  background-blend-mode: darken;
+  background-size: 100%;
+  background-position: top;
+  margin-bottom: 20px;
+}
+
+.accountingAdvanceThumbnail{
+  width: 100%;
+  height: auto;
+  padding: 18rem 0rem;
+  background-color: #90e0ef;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.4) url("https://ik.imagekit.io/attje3gmi/Learn%20And%20Earn%20Infinite%20LLP/iloveimg-converted%20(2)/5%20USA%20Accounting%20Mastery%20Advanced%20Accounting%20Training.jpg?updatedAt=1735968309757");
+  background-repeat: no-repeat;
+  background-blend-mode: darken;
+  background-size: 100%;
+  background-position: top;
   margin-bottom: 20px;
 }
 
@@ -1041,4 +1127,82 @@ li {
   padding: 20px 0px;
   margin: 5px 5px;
   font-size: 15px;
+}
+
+.form-container{
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.0) url('https://res.cloudinary.com/dab2njvcw/image/upload/v1736067844/about-bg-01_cnyqgv.png');
+  background-size: cover;
+}
+
+.heading-form h2{
+  font-family: heavy;
+}
+
+.heading-form{
+  margin-bottom: 10px;
+  border-color: #66666644;
+}
+
+.form-box{
+  border: 1px solid black;
+  margin-top: 3rem;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+.form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.personal h3,.course-related h3, .address-related h3, .additional-related h3{
+  margin-bottom: 10px;
+  font-family: heavy;
+  text-align: center;
+}
+
+.address-related{
+  margin-top: 1.5rem;
+}
+
+.additional-related{
+  margin: 1.5rem 0rem;
+}
+
+.form input{
+  width: 23rem;
+  padding: 8px 5px;
+  margin: 10px 0px;
+  font-family: normal;
+  border-radius: 3px;
+  border: 1px solid #03045e;
+}
+
+.form input:focus{
+  outline: none;
+}
+
+.form label{
+  font-family: normal;
+  font-size: 14px;
+}
+
+.button-form button{
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-family: normal;
+  background-color: #03045e;
+  color: white;
+  cursor: pointer;
 }
