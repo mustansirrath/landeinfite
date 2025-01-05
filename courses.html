@@ -20,8 +20,13 @@
                 <li><a href="./about.html">About Us</a></li>
                 <li><a href="./contact.html">Contact Us</a></li>
                 <hr class="nav-hr">
-                <li><a href="./register.html"><button class="unique"><i class="fa-regular fa-user"></i>&nbsp;&nbsp;Register</button></a></li>
-            </ul>
+                <li id="logout-btn" style="display: none;">
+                    <a href="javascript:void(0)" onclick="logout()">Logout</a>
+                </li>
+                <li id="register-btn">
+                    <a href="./register.html"><button class="unique"><i
+                                class="fa-regular fa-user"></i>&nbsp;&nbsp;Register</button></a>
+                </li>            </ul>
         </div>
     </nav>
 
@@ -257,5 +262,42 @@
                     href="https://www.instagram.com/mstdesignagency/">MST Designs</a></p>
         </div>
     </footer>
+
+    
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+
+<script src="./FirebaseConfig/firebaseconfig.js"></script>
+    
+    <script>
+    //   check the authenication status
+function checkUserStatus() {
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            // User is logged in, show logout button and hide register button
+            document.getElementById("logout-btn").style.display = "block";
+            document.getElementById("register-btn").style.display = "none";
+        } else {
+            // No user is logged in, show register button and hide logout button
+            document.getElementById("logout-btn").style.display = "none";
+            document.getElementById("register-btn").style.display = "block";
+        }
+    });
+}
+
+checkUserStatus();
+
+// Logout function
+function logout() {
+    firebase.auth().signOut().then(function() {
+        // After logout, check the status again
+        checkUserStatus();
+    }).catch(function(error) {
+        console.log('Error logging out:', error);
+    });
+}
+
+    </script>
 </body>
 </html>
