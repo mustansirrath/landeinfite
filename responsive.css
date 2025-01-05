@@ -530,3 +530,18 @@
         margin-bottom: 10px;
     }
 }
+
+@media only screen and (max-width: 951px) {
+    .left-side {
+        width: 95%;
+        margin-top: 5rem;
+    }
+
+    .right-side{
+        margin-top: 3rem;
+    }
+
+    .left-side p {
+        text-align: justify;
+    }
+}
