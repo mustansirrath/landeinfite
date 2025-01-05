@@ -404,12 +404,12 @@ html {
 
 .aboutus {
   width: 100%;
-  height: 76vh;
-  padding: 4rem 0rem;
+  height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  flex-wrap: wrap;
   background-color: #ecfcff;
 }
 
@@ -427,6 +427,7 @@ html {
   display: flex;
   align-items: center;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .left-side {
@@ -453,7 +454,6 @@ html {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* background-color: #090b6f; */
   background: rgba(0, 0, 0, 0) url("../Images/about-bg-01.png");
   background-size: cover;
 }
@@ -471,6 +471,7 @@ html {
 .twoBoxes {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .boxe {
