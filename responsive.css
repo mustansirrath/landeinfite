@@ -670,6 +670,10 @@
     .links-side ul li a{
         color: #03045e;
     }
+    
+    .links-side ul li a:hover{
+        color: #090b90;
+    }
 
     .nav-hr{
         width: 100%;
