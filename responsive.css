@@ -343,6 +343,14 @@
     #menu-btn {
         font-size: 22px;
     }
+
+    .title{
+        margin-bottom: 20px;
+    }
+
+    .firstDiv{
+        margin-bottom: 25px;
+    }
 }
 
 @media only screen and (max-width: 360px) {
@@ -670,7 +678,7 @@
     .links-side ul li a{
         color: #03045e;
     }
-    
+
     .links-side ul li a:hover{
         color: #090b90;
     }
