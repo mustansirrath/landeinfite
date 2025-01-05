@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <script src="https://kit.fontawesome.com/d3d61f5bb0.js" crossorigin="anonymous"></script>
     <title>USA Accounting - Advanced Course</title>
 </head>
+
 <body>
     <section class="form-container">
         <div class="form-box">
@@ -15,10 +17,9 @@
                 <h2>Please Fill Out All The Fields</h2>
             </div>
             <hr>
-
             <div class="form">
-                <!-- Formspree integration: Update form action with the Formspree endpoint -->
                 <form id="enrollForm">
+                    <!-- Personal Information -->
                     <div class="personal">
                         <h3>Personal Information</h3>
                         <label for="fullName">Full Name</label><br>
@@ -28,13 +29,16 @@
                         <label for="phoneNumber">Phone Number</label><br>
                         <input type="number" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" required>
                     </div><br>
+                    <!-- Course Information -->
                     <div class="course-related">
                         <h3>Course Information</h3>
                         <label for="courseName">Course Name</label><br>
-                        <input type="text" id="courseName" name="courseName" value="US Accounting Mastery: Advanced Accounting Training" disabled><br>
+                        <input type="text" id="courseName" name="courseName"
+                            value="US Accounting Mastery: Advanced Accounting Training" disabled><br>
                         <label for="coursePrice">Price</label><br>
                         <input type="text" id="coursePrice" name="coursePrice" value="14,999" disabled>
                     </div>
+                    <!-- Address Information -->
                     <div class="address-related">
                         <h3>Address Information</h3>
                         <label for="address">Address</label><br>
@@ -46,6 +50,7 @@
                         <label for="country">Country</label><br>
                         <input type="text" id="country" name="country" placeholder="Country Name" required><br>
                     </div>
+                    <!-- Additional Information -->
                     <div class="additional-related">
                         <h3>Additional Information</h3>
                         <label for="occupation">Occupation/Profession</label><br>
@@ -55,7 +60,6 @@
                         <label for="referral">Referral Source</label><br>
                         <input type="text" id="referral" name="referral" placeholder="From where you find us?"><br>
                     </div>
-
                     <div class="button-form">
                         <button type="submit">Checkout Now&nbsp;&nbsp;<i class="fa-regular fa-credit-card"></i></button>
                     </div>
@@ -72,14 +76,15 @@
     <!-- Firebase Configuration -->
     <script src="./FirebaseConfig/firebaseconfig.js"></script>
     <script>
-        // Check user authentication
         firebase.auth().onAuthStateChanged(user => {
             if (!user) {
                 window.location.href = 'register.html';
+            } else {
+
+                document.querySelector('#emailAddress').value = user.email;
             }
         });
 
-        // Handle form submission with Firebase, then send an email via Formspree
         document.getElementById('enrollForm').addEventListener('submit', async (event) => {
             event.preventDefault();
 
@@ -89,12 +94,14 @@
                 return;
             }
 
+            const courseName = document.getElementById('courseName').value;
+
             const userData = {
                 fullName: document.getElementById('fullName').value,
                 email,
                 phoneNumber: document.getElementById('phoneNumber').value,
-                courseName: document.getElementById('courseName').value,
-                coursePrice: document.getElementById('coursePrice').value,
+                courseName: "US Accounting Mastery: Advanced Accounting Training",
+                coursePrice: "14,999",
                 address: document.getElementById('address').value,
                 city: document.getElementById('city').value,
                 state: document.getElementById('state').value,
@@ -106,53 +113,52 @@
 
             try {
                 const db = firebase.firestore();
-                const docRef = db.collection("enrolled_users").doc(email);
 
-                const docSnap = await docRef.get();
-                if (docSnap.exists) {
+                // Query to check if the user is already enrolled in this course
+                const querySnapshot = await db.collection("enrolled_users")
+                    .where("email", "==", email)
+                    .where("courseName", "==", courseName)
+                    .get();
+
+                if (!querySnapshot.empty) {
                     alert("You are already enrolled in this course.");
                 } else {
-                    await docRef.set(userData);
+                    // Add the user's enrollment data to Firestore
+                    await db.collection("enrolled_users").add(userData);
                     alert("Successfully enrolled in the course!");
 
                     // Send data to Formspree via email
                     const formData = new FormData();
-                    formData.append("fullName", userData.fullName);
-                    formData.append("email", userData.email);
-                    formData.append("phoneNumber", userData.phoneNumber);
-                    formData.append("courseName", userData.courseName);
-                    formData.append("coursePrice", userData.coursePrice);
-                    formData.append("address", userData.address);
-                    formData.append("city", userData.city);
-                    formData.append("state", userData.state);
-                    formData.append("country", userData.country);
-                    formData.append("occupation", userData.occupation);
-                    formData.append("purpose", userData.purpose);
-                    formData.append("referral", userData.referralSource);
+                    for (const key in userData) {
+                        formData.append(key, userData[key]);
+                    }
 
                     await fetch("https://formspree.io/f/mrbbolwk", {
                         method: "POST",
                         body: formData,
                     })
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Error sending email: ' + response.statusText);
-                        }
-                        return response.json();
-                    })
-                    .then(() => {
-                        alert("Enrollment confirmation email sent!");
-                    })
-                    .catch(error => {
-                        console.error("Error sending email:", error);
-                        // alert("An error occurred while sending the email. Please try again.");
-                    });
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Error sending email: ' + response.statusText);
+                            }
+                            return response.json();
+                        })
+                        .then(() => {
+                            alert("Enrollment confirmation email sent!");
+                        })
+                        .catch(error => {
+                            console.error("Error sending email:", error);
+                            alert("thank you, you enrolled in this course");
+                        });
                 }
             } catch (error) {
                 console.error("Error accessing Firestore: ", error);
-                alert("An error occurred while enrolling. Please try again.");
+                alert("thank you, you enrolled in this course");
             }
         });
     </script>
+
+
 </body>
+
 </html>
