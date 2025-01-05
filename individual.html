@@ -17,7 +17,6 @@
             <hr>
 
             <div class="form">
-                <!-- Add an ID to the form -->
                 <form id="enrollForm">
                     <div class="personal">
                         <h3>Personal Information</h3>
@@ -57,13 +56,13 @@
                     </div>
 
                     <div class="button-form">
-                        <!-- Remove the anchor tag around the button -->
                         <button type="submit">Checkout Now&nbsp;&nbsp;<i class="fa-regular fa-credit-card"></i></button>
                     </div>
                 </form>
             </div>
         </div>
     </section>
+
    <!-- Firebase Compatibility Scripts -->
    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
@@ -74,12 +73,11 @@
    <script>
     firebase.auth().onAuthStateChanged(user => {
     if (!user) {
-      // If no user is authenticated, redirect to the register page
       window.location.href = 'register.html';
     }
   });
   
-    // Handle form submission
+    // Handle form submission with Firebase and Formspree
     document.getElementById('enrollForm').addEventListener('submit', async (event) => {
         event.preventDefault();
 
@@ -116,6 +114,40 @@
                 // Create a new document if it doesn't exist
                 await docRef.set(userData);
                 alert("Successfully enrolled in the course!");
+
+                // Send data to Formspree via email
+                const formData = new FormData();
+                formData.append("fullName", userData.fullName);
+                formData.append("email", userData.email);
+                formData.append("phoneNumber", userData.phoneNumber);
+                formData.append("courseName", userData.courseName);
+                formData.append("coursePrice", userData.coursePrice);
+                formData.append("address", userData.address);
+                formData.append("city", userData.city);
+                formData.append("state", userData.state);
+                formData.append("country", userData.country);
+                formData.append("occupation", userData.occupation);
+                formData.append("purpose", userData.purpose);
+                formData.append("referral", userData.referralSource);
+
+                await fetch("https://formspree.io/f/mrbbolwk", {
+                    method: "POST",
+                    body: formData,
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Error sending email: ' + response.statusText);
+                    }
+                    return response.json();
+                })
+                .then(() => {
+                    alert("Enrollment confirmation email sent!");
+                })
+                .catch(error => {
+                    console.error("Error sending email:", error);
+                    alert("An error occurred while enrolling. Please try again.");
+
+                });
             }
         } catch (error) {
             console.error("Error accessing Firestore: ", error);
@@ -124,7 +156,5 @@
     });
 </script>
 
-
-
- </body>
- </html>
+</body>
+</html>
