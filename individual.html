@@ -81,11 +81,7 @@
     document.getElementById('enrollForm').addEventListener('submit', async (event) => {
         event.preventDefault();
 
-        const email = localStorage.getItem('user');
-        if (!email) {
-            alert('User not logged in.');
-            return;
-        }
+      
 
         const userData = {
             fullName: document.getElementById('fullName').value,
