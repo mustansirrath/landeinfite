@@ -437,6 +437,7 @@ html {
 .left-side p {
   font-family: normal;
   font-size: 19px;
+  text-align: justify;
 }
 
 .left-side b {
