@@ -647,8 +647,8 @@
         position: fixed;
         padding: 15px;
         top: 0;
-        right: -350px;
-        width: 350px;
+        right: -250px;
+        width: 250px;
         height: 100%;
         background-color: #90e0ef;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
