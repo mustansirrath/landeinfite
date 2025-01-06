@@ -10,3 +10,20 @@ function slideTestimonials() {
 
 // Slide every 3 seconds
 setInterval(slideTestimonials, 5000);
+
+// Select elements
+const menuBtn = document.getElementById('menu-btn');
+const menuClose = document.getElementById('menu-close');
+const sidebar = document.querySelector('.links-side ul');
+
+// Open the sidebar
+menuBtn.addEventListener('click', function () {
+    sidebar.classList.add('active');
+});
+
+// Close the sidebar
+menuClose.addEventListener('click', function () {
+    sidebar.classList.remove('active');
+});
+
+

@@ -1,619 +1,943 @@
 @media only screen and (max-width: 1265px) {
-    .certiInfo {
-        width: 86%;
-        margin-bottom: 30px;
-    }
+  .certiInfo {
+    width: 86%;
+    margin-bottom: 30px;
+  }
 }
-
 
 @media only screen and (max-width: 912px) {
-    .firstRow {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
+  .firstRow {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
 
-
 @media only screen and (max-width: 895px) {
-    .info-hero {
-        width: 50%;
-        padding: 25px 0px;
-        margin-bottom: 2rem;
-    }
+  .info-hero {
+    width: 50%;
+    padding: 25px 0px;
+    margin-bottom: 2rem;
+  }
 }
 
 @media only screen and (max-width: 1050px) {
-    .footer-container {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        flex-direction: column;
-        gap: 20px;
-    }
+  .footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 20px;
+  }
 }
 
 @media only screen and (max-width: 768px) {
-    .info-hero h1 {
-        font-family: heavy;
-        font-size: 2rem;
-        margin-bottom: 7px;
-    }
+  .info-hero h1 {
+    font-family: heavy;
+    font-size: 2rem;
+    margin-bottom: 7px;
+  }
 
-    .info-hero p {
-        font-family: normal;
-        margin-bottom: 7px;
-        font-size: 15px;
-        color: rgb(63, 63, 63);
-    }
+  .info-hero p {
+    font-family: normal;
+    margin-bottom: 7px;
+    font-size: 15px;
+    color: rgb(63, 63, 63);
+  }
 }
 
 @media only screen and (max-width: 650px) {
-    .certificateImg img {
-        width: 35rem;
-    }
+  .certificateImg img {
+    width: 35rem;
+  }
 
-    .info-hero {
-        width: 100%;
-        padding: 25px 0px;
-        margin-bottom: 2rem;
-    }
+  .info-hero {
+    width: 100%;
+    padding: 25px 0px;
+    margin-bottom: 2rem;
+  }
 
-    .info-hero h1 {
-        font-family: heavy;
-        font-size: 1.7rem;
-        margin-bottom: 7px;
-    }
+  .info-hero h1 {
+    font-family: heavy;
+    font-size: 1.7rem;
+    margin-bottom: 7px;
+  }
 
-    .info-hero {
-        width: 100%;
-        padding: 45px 0px;
-        margin-bottom: 2rem;
-    }
+  .info-hero {
+    width: 100%;
+    padding: 45px 0px;
+    margin-bottom: 2rem;
+  }
 
-    .team-box {
-        border: none;
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-around;
-        border-radius: 5px;
-        background-color: #03045e;
-        margin: 20px;
-        width: 25rem;
-        height: 40vh;
-    }
+  .team-box {
+    border: none;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 5px;
+    background-color: #03045e;
+    margin: 20px;
+    width: 25rem;
+    height: 40vh;
+  }
 
-    .hero {
-        width: 100%;
-        height: auto;
-        padding: 0rem 3rem;
-        background: rgba(0, 0, 0, 0) url("../Images/banner-LLP-01-01.png");
-        background-size: cover;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
+  .hero {
+    width: 100%;
+    height: auto;
+    padding: 0rem 3rem;
+    background: rgba(0, 0, 0, 0) url("../Images/banner-LLP-01-01.png");
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 }
 
 @media only screen and (max-width: 577px) {
-    .certificateImg img {
-        width: 32rem;
-    }
+  .certificateImg img {
+    width: 32rem;
+  }
 
-    .certiInfo h3 {
-        font-family: bold;
-        font-size: 1.8rem;
-        margin-bottom: 5px;
-    }
+  .certiInfo h3 {
+    font-family: bold;
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+  }
 
-    .certiInfo h3 {
-        font-family: bold;
-        font-size: 1.8rem;
-        margin-bottom: 5px;
-    }
+  .certiInfo h3 {
+    font-family: bold;
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+  }
 }
 
 @media only screen and (max-width: 510px) {
-    .heroImg {
-        width: 24rem;
-    }
+  .heroImg {
+    width: 24rem;
+  }
 
-    .info-hero p {
-        font-family: normal;
-        margin-bottom: 7px;
-        font-size: 14px;
-        color: rgb(63, 63, 63);
-    }
+  .info-hero p {
+    font-family: normal;
+    margin-bottom: 7px;
+    font-size: 14px;
+    color: rgb(63, 63, 63);
+  }
 
-    .certificateImg img {
-        width: 28rem;
-    }
+  .certificateImg img {
+    width: 28rem;
+  }
+
+  footer {
+    background-color: #f3faff;
+    padding: 20px 21px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #03045e;
+  }
 }
 
 @media only screen and (max-width: 448px) {
-    .testimonial-slider {
-        width: 95%;
-        height: 100%;
-        overflow: hidden;
-        border-radius: 8px;
-    }
+  .testimonial-slider {
+    width: 95%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+  }
 
-    .testimonial-text {
-        font-size: 14px;
-    }
+  .testimonial-text {
+    font-size: 14px;
+  }
 
-    .testimonial-writer {
-        font-size: 18px;
-    }
+  .testimonial-writer {
+    font-size: 18px;
+  }
 
-    .testimonial-writer-location {
-        font-size: 13px;
-    }
+  .testimonial-writer-location {
+    font-size: 13px;
+  }
 
-    .certificateImg img {
-        width: 24rem;
-    }
+  .certificateImg img {
+    width: 24rem;
+  }
 
-    .certiInfo h3 {
-        font-family: bold;
-        font-size: 1.5rem;
-        margin-bottom: 5px;
-    }
+  .certiInfo h3 {
+    font-family: bold;
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+  }
 
-    .certiInfo p {
-        font-size: 14px;
-        font-weight: bold;
-    }
+  .certiInfo p {
+    font-size: 14px;
+    font-weight: bold;
+  }
 
-    .image-team img{
-        width: 10rem;
-    }
+  .image-team img {
+    width: 10rem;
+  }
 
-    .team-box {
-        width: 22rem;
-        height: 40vh;
-    }
+  .team-box {
+    width: 22rem;
+    height: 40vh;
+  }
 
-    .courseBox .courseImg {
-        width: 22rem;
-    }
+  .courseBox .courseImg {
+    width: 22rem;
+  }
 
-    .courseBox {
-        width: 24rem;
-    }
+  .courseBox {
+    width: 24rem;
+  }
 
-    .courseBox button {
-        width: 22rem;
-    }
+  .courseBox button {
+    width: 22rem;
+  }
 
-    .courseBox .infoCourse h3 { 
-        font-size: 18px;
-    }
+  .courseBox .infoCourse h3 {
+    font-size: 18px;
+  }
 }
 
 @media only screen and (max-width: 419px) {
-    .heroImg {
-        width: 22rem;
-    }
+  .heroImg {
+    width: 22rem;
+  }
 
-    .courseBox {
-        width: 23rem;
-    }
-    .courseBox .infoCourse h3 {
-        font-size: 17px;
-    }
+  .courseBox {
+    width: 23rem;
+  }
+  .courseBox .infoCourse h3 {
+    font-size: 17px;
+  }
 
-    .certificateImg img {
-        width: 22rem;
-    }
+  .certificateImg img {
+    width: 22rem;
+  }
 
-    .certiInfo h3 {
-        font-size: 1.4rem;
-    }
+  .certiInfo h3 {
+    font-size: 1.4rem;
+  }
 }
 
 @media only screen and (max-width: 390px) {
-    .heroImg {
-        width: 20rem;
-    }
+  .heroImg {
+    width: 20rem;
+  }
 
-    .courseBox {
-        width: 21rem;
-    }
+  .courseBox {
+    width: 21rem;
+  }
 
-    .courseBox .courseImg {
-        width: 20rem;
-    }
+  .courseBox .courseImg {
+    width: 20rem;
+  }
 
-    .courseBox button {
-        width: 19rem;
-    }
+  .courseBox button {
+    width: 19rem;
+  }
 
-    .testimonial-slider {
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        border-radius: 8px;
-    }
+  .testimonial-slider {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+  }
 
-    .testimonial-text {
-        font-size: 13px;
-        word-wrap: normal;
-    }
+  .testimonial-text {
+    font-size: 13px;
+    word-wrap: normal;
+  }
 
-    .certiInfo h3 {
-        font-size: 1.3rem;
-    }
+  .certiInfo h3 {
+    font-size: 1.3rem;
+  }
 
-    .certiInfo h3 {
-        font-size: 1.3rem;
-    }
+  .certiInfo h3 {
+    font-size: 1.3rem;
+  }
 
-    .footer-logo {
-        width: 19rem;
-        margin-bottom: 10px;
-    }
+  .footer-logo {
+    width: 19rem;
+    margin-bottom: 10px;
+  }
 
-    .footer-section ul li a {
-        text-decoration: none;
-        color: #333;
-        font-size: 15px;
-        font-family: normal;
-    }
+  .footer-section ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 15px;
+    font-family: normal;
+  }
 
-    .team-box {
-        width: 20rem;
-        height: 40vh;
-    }
+  .team-box {
+    width: 20rem;
+    height: 40vh;
+  }
 
-    .headingT h2 {
-        font-family: bold;
-        font-size: 1.7rem;
-        color: black;
-    }
+  .headingT h2 {
+    font-family: bold;
+    font-size: 1.7rem;
+    color: black;
+  }
 }
 
 @media only screen and (max-width: 395px) {
-    .info-hero h1 {
-        font-family: heavy;
+  .info-hero h1 {
+    font-family: heavy;
+    font-size: 1.4rem;
+    margin-bottom: 7px;
+  }
+
+  .info-hero p {
+    font-family: normal;
+    margin-bottom: 7px;
+    font-size: 12px;
+    color: rgb(63, 63, 63);
+  }
+
+  .heroImg {
+    width: 18rem;
+  }
+
+  .courseBox {
+    width: 21rem;
+  }
+
+  .courseBox .courseImg {
+    width: 20rem;
+  }
+
+  .courseBox .infoCourse h3 {
+    font-size: 17px;
+    word-wrap: normal;
+  }
+
+  .headingT h2 {
+    font-family: bold;
+    font-size: 1.8rem;
+    color: black;
+  }
+
+  .courseBox p {
+    font-family: normal;
+    font-size: 12px;
+  }
+
+  .courseBox .infoCourse p {
+    margin-bottom: 7px;
+    font-size: 12px;
+    font-family: bold;
+  }
+
+  .courseBox button {
+    width: 19rem;
+  }
+
+  .logo-img {
+    width: 18rem;
+  }
+
+  #menu-btn {
+    font-size: 22px;
+  }
+
+  .title {
+    margin-bottom: 20px;
+  }
+
+  .firstDiv {
+    margin-bottom: 25px;
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  .certificateImg img {
+    width: 20rem;
+  }
+
+  .headingCe h2 {
+    font-family: bold;
+    color: black;
+    font-size: 1.7rem;
+  }
+}
+
+@media only screen and (max-width: 345px) {
+  .certiInfo p {
+    font-size: 13px;
+    font-weight: bold;
+  }
+
+  .headingCe h2 {
+    font-family: bold;
+    color: black;
+    font-size: 1.6rem;
+  }
+
+  .certiInfo p {
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+  .headingT h2 {
+    font-family: bold;
+    font-size: 1.5rem;
+    color: black;
+  }
+
+  .courseBox {
+    width: 19rem;
+  }
+
+  .courseBox .courseImg {
+    width: 18rem;
+  }
+
+  .courseBox .infoCourse h3 {
+    font-size: 14px;
+    word-wrap: normal;
+  }
+
+  .courseBox button {
+    width: 17rem;
+  }
+
+  .footer-section ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 13px;
+    font-family: normal;
+  }
+
+  .footer-logo {
+    width: 16rem;
+    margin-bottom: 10px;
+  }
+
+  .image-team img {
+    width: 9rem;
+  }
+
+  .team-box {
+    width: 18rem;
+    height: 40vh;
+  }
+}
+
+@media only screen and (max-width: 325px) {
+  .info-hero h1 {
+    font-family: heavy;
+    font-size: 1.2rem;
+    margin-bottom: 7px;
+  }
+
+  .info-hero p {
+    font-family: normal;
+    margin-bottom: 7px;
+    font-size: 10px;
+    color: rgb(63, 63, 63);
+  }
+
+  .courseBox {
+    width: 18rem;
+  }
+
+  .courseBox .courseImg {
+    width: 17rem;
+  }
+
+  .courseBox .infoCourse h3 {
+    font-size: 13px;
+    word-wrap: normal;
+  }
+
+  .courseBox p {
+    font-family: normal;
+    font-size: 11px;
+  }
+
+  .courseBox button {
+    width: 16rem;
+  }
+
+  .testimonial-text {
+    font-size: 12px;
+    word-wrap: normal;
+  }
+
+  .testimonial-writer {
+    font-size: 17px;
+  }
+
+  .certiInfo h3 {
+    font-size: 1.2rem;
+  }
+
+  .certiInfo p {
+    font-size: 11px;
+    font-weight: bold;
+  }
+
+  .certificateImg img {
+    width: 18rem;
+  }
+
+  .heading-team h2 {
+    font-family: bold;
+    font-size: 1.7rem;
+  }
+
+  .image-team img {
+    width: 8rem;
+  }
+}
+
+@media only screen and (max-width: 306px) {
+  .info-hero h1 {
+    font-family: heavy;
+    font-size: 1.1rem;
+    margin-bottom: 7px;
+  }
+
+  .info-hero p {
+    font-family: normal;
+    margin-bottom: 7px;
+    font-size: 9px;
+    color: rgb(63, 63, 63);
+  }
+
+  .info-hero button {
+    font-size: 12px;
+  }
+
+  .courseBox {
+    width: 16rem;
+  }
+
+  .courseBox .courseImg {
+    width: 15rem;
+  }
+
+  .courseBox button {
+    width: 14rem;
+  }
+
+  .headingC h2 {
+    font-family: bold;
+    color: white;
+    font-size: 1.6rem;
+  }
+
+  .certificateImg img {
+    width: 17rem;
+  }
+
+  .certiInfo h3 {
+    font-size: 1.1rem;
+  }
+
+  .certiInfo p {
+    font-size: 10px;
+    font-weight: bold;
+  }
+
+  .team-box {
+    width: 16rem;
+    height: 40vh;
+  }
+
+  .footer-logo {
+    width: 14rem;
+    margin-bottom: 10px;
+  }
+}
+
+@media only screen and (max-width: 990px) {
+  .left-side {
+    width: 95%;
+    margin-top: 5rem;
+    padding: 13px;
+  }
+
+  .heading-about h2 {
+    font-family: bold;
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+  }
+
+  .right-side {
+    margin-top: 3rem;
+  }
+}
+
+@media only screen and (max-width: 769px) {
+  .boxe {
+    height: 22vh;
+  }
+}
+
+@media only screen and (max-width: 653px) {
+  .boxe {
+    height: 32vh;
+    flex-wrap: wrap;
+    width: 36rem;
+  }
+}
+
+@media only screen and (max-width: 589px) {
+  .boxe {
+    width: 32rem;
+  }
+}
+
+@media only screen and (max-width: 525px) {
+  .boxe {
+    height: 36vh;
+    flex-wrap: wrap;
+    width: 25rem;
+  }
+}
+
+@media only screen and (max-width: 474px) {
+  .right-side img {
+    width: 27rem;
+  }
+
+  .heading-vision h2 {
+    font-family: bold;
+    font-size: 2rem;
+    color: white;
+    text-align: center;
+  }
+
+  .logo-img {
+    width: 19rem;
+  }
+}
+
+@media only screen and (max-width: 474px) {
+  .right-side img {
+    width: 23rem;
+  }
+
+  .boxe {
+    height: 38vh;
+    flex-wrap: wrap;
+    width: 20rem;
+  }
+}
+
+@media only screen and (max-width: 351px) {
+  .right-side img {
+    width: 20rem;
+  }
+
+  .left-side p {
+    font-size: 18px;
+  }
+
+  .boxe {
+    height: 41vh;
+    flex-wrap: wrap;
+    width: 18rem;
+  }
+}
+
+@media only screen and (max-width: 940px) {
+  .links-side ul {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    position: fixed;
+    padding: 15px;
+    top: 0;
+    right: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: #90e0ef;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: right 0.6s ease;
+    z-index: 999;
+  }
+
+  #menu-close {
+    color: #03045e;
+    display: block;
+    margin-bottom: 1.5rem;
+    font-size: 23px;
+  }
+
+  .links-side ul li {
+    margin: 20px 10px;
+  }
+
+  .links-side ul li a {
+    color: #03045e;
+  }
+
+  .links-side ul li a:hover {
+    color: #090b90;
+  }
+
+  .nav-hr {
+    width: 100%;
+  }
+
+  .links-side ul li .unique {
+    color: white;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 4px;
+    background-color: #03045e;
+  }
+
+  ul.active {
+    right: 0;
+  }
+
+  #menu-btn {
+    font-size: 25px;
+    display: block;
+    color: white;
+    cursor: pointer;
+    z-index: 1000; /* Ensure it appears above the menu */
+  }
+}
+
+@media only screen and (max-width: 1025px) {
+  .form-section {
+    margin-top: 3rem;
+  }
+
+  form input,
+  form textarea,
+  form button {
+    width: 46rem;
+  }
+}
+
+@media only screen and (max-width: 814px) {
+  .support-options {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+  }
+
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+@media only screen and (max-width: 794px) {
+  form input,
+  form textarea,
+  form button {
+    width: 40rem;
+  }
+}
+
+@media only screen and (max-width: 698px) {
+  form input,
+  form textarea,
+  form button {
+    width: 35rem;
+  }
+}
+
+@media only screen and (max-width: 615px) {
+  form input,
+  form textarea,
+  form button {
+    width: 28rem;
+  }
+}
+
+@media only screen and (max-width: 566px) {
+  .support-options div {
+    width: 31rem;
+  }
+}
+
+@media only screen and (max-width: 531px) {
+  form input,
+  form textarea,
+  form button {
+    width: 23rem;
+  }
+
+  .support-options div {
+    width: 25rem;
+  }
+}
+
+@media only screen and (max-width: 440px) {
+  form input,
+  form textarea,
+  form button {
+    width: 19rem;
+  }
+
+  .support-options div {
+    width: 21rem;
+  }
+}
+
+@media only screen and (max-width: 381px) {
+  form input,
+  form textarea,
+  form button {
+    width: 16rem;
+  }
+
+  .support-options div {
+    width: 18rem;
+  }
+}
+
+@media only screen and (max-width: 328px) {
+  form input,
+  form textarea,
+  form button {
+    width: 12rem;
+  }
+
+  .support-options div {
+    width: 14rem;
+  }
+
+  .support-options h3 {
+    font-size: 16px;
+  }
+
+  .support-options p {
+    font-size: 14px;
+  }
+}
+@media only screen and (max-width: 658px) {
+  .left-panel {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 438px) {
+  .form input {
+    width: 21rem;
+  }
+
+  .form-box {
+    padding: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 415px) {
+  .form input {
+    width: 18rem;
+  }
+
+  .heading-form h2 {
+    font-size: 20px;
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 345px) {
+  .form input {
+    width: 16rem;
+  }
+  .form input {
+    width: 18rem;
+  }
+}
+
+@media only screen and (max-width: 1092px) {
+  .teach {
+    padding: 4rem 0rem;
+  }
+
+  .box1 {
+    width: 20rem;
+  }
+
+  .teach-text {
+    width: 60%;
+  }
+}
+
+@media only screen and (max-width: 747px) {
+  .teach-text {
+    width: 91%;
+  }
+
+  .box1 {
+    text-align: center;
+  }
+
+  .boxes-teach {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media only screen and (max-width: 663px) {
+  .gallary img {
+    width: 34rem;
+  }
+}
+
+@media only screen and (max-width: 554px) {
+  .gallary img {
+    width: 30rem;
+  }
+
+  .gallary {
+    padding: 4rem 1rem;
+}
+
+.heading-gallary {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+}
+
+@media only screen and (max-width: 518px) {
+  .teach-img img {
+    width: 30rem;
+  }
+
+  .careerBox {
+    width: 24rem;
+    height: 22vh;
+  }
+
+  .gallary img {
+    width: 25rem;
+}
+}
+
+@media only screen and (max-width: 451px) {
+    .teach-img img {
+        width: 27rem;
+    }
+}
+
+@media only screen and (max-width: 409px) {
+    .teach-text h2 {
+        font-family: bold;
         font-size: 1.4rem;
         margin-bottom: 7px;
     }
 
-    .info-hero p {
-        font-family: normal;
-        margin-bottom: 7px;
-        font-size: 12px;
-        color: rgb(63, 63, 63);
-    }
-
-    .heroImg {
-        width: 18rem;
-    }
-
-    .courseBox {
-        width: 21rem;
-    }
-
-    .courseBox .courseImg {
+    .careerBox {
         width: 20rem;
-    }
-
-    .courseBox .infoCourse h3 {
-        font-size: 17px;
-        word-wrap: normal;
-    }
-
-    .headingT h2 {
-        font-family: bold;
-        font-size: 1.8rem;
-        color: black;
-    }
-
-    .courseBox p {
-        font-family: normal;
-        font-size: 12px;
-    }
-
-    .courseBox .infoCourse p {
-        margin-bottom: 7px;
-        font-size: 12px;
-        font-family: bold;
-    }
-
-    .courseBox button {
-        width: 19rem;
+        height: 16vh;
     }
 }
 
-@media only screen and (max-width: 360px) {
-    .certificateImg img {
-        width: 20rem;
-    }
-
-    .headingCe h2 {
-        font-family: bold;
-        color: black;
-        font-size: 1.7rem;
-    }
-}
-
-@media only screen and (max-width: 345px) {
-    .certiInfo p {
-        font-size: 13px;
-        font-weight: bold;
-    }
-
-    .headingCe h2 {
-        font-family: bold;
-        color: black;
-        font-size: 1.6rem;
-    }
-
-    .certiInfo p {
-        font-size: 12px;
-        font-weight: bold;
-    }
-
-    .headingT h2 {
-        font-family: bold;
-        font-size: 1.5rem;
-        color: black;
-    }
-
-    .courseBox {
-        width: 19rem;
-    }
-
-    .courseBox .courseImg {
-        width: 18rem;
-    }
-
-    .courseBox .infoCourse h3 {
-        font-size: 14px;
-        word-wrap: normal;
-    }
-
-    .courseBox button {
-        width: 17rem;
-    }
-
-    .footer-section ul li a {
-        text-decoration: none;
-        color: #333;
-        font-size: 13px;
-        font-family: normal;
-    }
-
-    .footer-logo {
-        width: 16rem;
-        margin-bottom: 10px;
-    }
-
-    .image-team img {
-        width: 9rem;
-    }
-
-    .team-box {
-        width: 18rem;
-        height: 40vh;
-    }
-}
-
-@media only screen and (max-width: 325px) {
-    .info-hero h1 {
-        font-family: heavy;
-        font-size: 1.2rem;
-        margin-bottom: 7px;
-    }
-
-    .info-hero p {
-        font-family: normal;
-        margin-bottom: 7px;
-        font-size: 10px;
-        color: rgb(63, 63, 63);
-    }
-
-    .courseBox {
-        width: 18rem;
-    }
-
-    .courseBox .courseImg {
-        width: 17rem;
-    }
-
-    .courseBox .infoCourse h3 {
-        font-size: 13px;
-        word-wrap: normal;
-    }
-
-    .courseBox p {
-        font-family: normal;
-        font-size: 11px;
-    }
-
-    .courseBox button {
-        width: 16rem;
-    }
-
-    .testimonial-text {
-        font-size: 12px;
-        word-wrap: normal;
-    }
-
-    .testimonial-writer {
-        font-size: 17px;
-    }
-
-    .certiInfo h3 {
-        font-size: 1.2rem;
-    }
-
-    .certiInfo p {
-        font-size: 11px;
-        font-weight: bold;
-    }
-
-    .certificateImg img {
-        width: 18rem;
-    }
-
-    .heading-team h2 {
-        font-family: bold;
-        font-size: 1.7rem;
-    }
-
-    .image-team img {
-        width: 8rem;
-    }
-}
-
-@media only screen and (max-width: 306px) {
-    .info-hero h1 {
-        font-family: heavy;
-        font-size: 1.1rem;
-        margin-bottom: 7px;
-    }
-
-    .info-hero p {
-        font-family: normal;
-        margin-bottom: 7px;
-        font-size: 9px;
-        color: rgb(63, 63, 63);
-    }
-
-    .info-hero button {
-        font-size: 12px;
-    }
-
-    .courseBox {
-        width: 16rem;
-    }
-
-    .courseBox .courseImg {
-        width: 15rem;
-    }
-
-    .courseBox button {
-        width: 14rem;
-    }
-
-    .headingC h2 {
-        font-family: bold;
-        color: white;
-        font-size: 1.6rem;
-    }
-
-    .certificateImg img {
-        width: 17rem;
-    }
-
-    .certiInfo h3 {
-        font-size: 1.1rem;
-    }
-
-    .certiInfo p {
-        font-size: 10px;
-        font-weight: bold;
-    }
-
-    .team-box {
-        width: 16rem;
-        height: 40vh;
-    }
-
-    .footer-logo {
-        width: 14rem;
-        margin-bottom: 10px;
-    }
-}
-
-@media only screen and (max-width: 990px) {
-    .left-side {
-        width: 95%;
-        margin-top: 5rem;
-        padding: 13px;
-    }
-
-    .heading-about h2 {
-        font-family: bold;
-        margin-bottom: 2rem;
-        font-size: 1.8rem;
-    }
-
-    .right-side{
-        margin-top: 3rem;
-    }
-}
-
-@media only screen and (max-width: 769px) {
-    .boxe {
-        height: 22vh;
-    }
-}
-
-@media only screen and (max-width: 653px) {
-    .boxe {
-        height: 32vh;
-        flex-wrap: wrap;
-        width: 36rem;
-    }
-}
-
-@media only screen and (max-width: 589px) {
-    .boxe {
-        width: 32rem;
-    }
-}
-
-@media only screen and (max-width: 525px) {
-    .boxe {
-        height: 36vh;
-        flex-wrap: wrap;
-        width: 25rem;
-    }
-}
-
-@media only screen and (max-width: 474px) {
-    .right-side img {
-        width: 27rem;
-    }
-
-    .heading-vision h2 {
-        font-family: bold;
-        font-size: 2rem;
-        color: white;
-        text-align: center;
-    }
-}
-
-@media only screen and (max-width: 474px) {
-    .right-side img {
-        width: 23rem;
-    }
-
-    .boxe {
-        height: 38vh;
-        flex-wrap: wrap;
-        width: 20rem;
-    }
-}
-
-@media only screen and (max-width: 351px) {
-    .right-side img {
-        width: 20rem;
-    }
-
-    .left-side p {
-        font-size: 18px;
-    }
-
-    .boxe {
-        height: 41vh;
-        flex-wrap: wrap;
-        width: 18rem;
-    }
-}

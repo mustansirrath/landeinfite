@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/d3d61f5bb0.js" crossorigin="anonymous"></script>
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./responsive.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo-side">
+            <a href="./index.html"><img src="https://res.cloudinary.com/dab2njvcw/image/upload/v1735978490/logo-light-01_yrlyd0.png" class="logo-img"
+                    alt="Learn and earn infinite LLP"></a>
+        </div>
+        <div class="links-side">
+            <ul>
+                <i class="fa-solid fa-xmark" id="menu-close"></i>
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./courses.html">Courses</a></li>
+                <li><a href="./about.html">About Us</a></li>
+                <li><a href="./contact.html">Contact Us</a></li>
+                <hr class="nav-hr">
+                <li id="logout-btn" style="display: none;">
+                    <a href="javascript:void(0)" onclick="logout()">Logout</a>
+                </li>
+                <li id="register-btn">
+                    <a href="./register.html"><button class="unique"><i
+                                class="fa-regular fa-user"></i>&nbsp;&nbsp;Register</button></a>
+                </li>
+            </ul>
+            <i class="fa-solid fa-bars-staggered" id="menu-btn"></i>
+        </div>
+    </nav>
+    <section class="contact-us">
+        <div class="container">
+            <div class="contact-info">
+                <div>
+                <h1>Contact Us</h1>
+                <p>Email, call, or fill the form, and we will get back to you soon.</p>
+                <p><i class="fa-regular fa-envelope"></i>&nbsp;&nbsp;<a href="mailto:info@landeinfinite.com" target="_blank">info@landeinfinite.com</a></p>
+                <p><i class="fa-solid fa-phone-volume"></i>&nbsp;&nbsp;<a href="https://wa.me/+919104949745" target="_blank">L&E Whatsapp - 1</a></p>
+                <p><i class="fa-solid fa-phone-volume"></i>&nbsp;&nbsp;<a href="https://wa.me/+919033712533" target="_blank">L&E Whatsapp - 2</a></p>
+            </div>
+                <div class="support-options">
+                    <div>
+                        <h3>Customer Support</h3>
+                        <p>Our support team is available around the clock to address any concerns or queries you may have.</p>
+                    </div>
+                    <div>
+                        <h3>Feedback & Suggestions</h3>
+                        <p>We value your feedback and are continuously working to improve Snappy.</p>
+                    </div>
+                    <div>
+                        <h3>Sales Inquiries</h3>
+                        <p>For sales-related questions or inquiries, please contact us at <a href="mailto:sales@landeinfinite.com" target="_blank">sales@landeinfinite.com</a>.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2>Get in Touch</h2>
+                <form id="contactForm" method="post" action="https://formspree.io/f/mrbbolwk">
+                    <input type="text" placeholder="First name" required>
+                    <input type="text" placeholder="Last name" required>
+                    <input type="email" placeholder="Your email" required>
+                    <input type="tel" placeholder="Phone number" required>
+                    <textarea placeholder="How can we help?"></textarea>
+                    <button type="submit">Submit Now</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-container">
+          <div class="footer-section">
+            <img src="https://res.cloudinary.com/dab2njvcw/image/upload/v1735978488/logo-dark-01_rmd7uk.png" alt="Learn and earn infinite LLP" class="footer-logo">
+        </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./about.html">About us</a></li>
+                    <li><a href="./courses.html">Courses</a></li>
+                    <li><a href="./contact.html">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Our Courses</h4>
+                <ul>
+                    <li><a href="./US-Individual.html">US Individual Tax Essentials: Comprehensive Training for Individual Taxation</a>
+                    </li>
+                    <li><a href="./US-Corporate.html">US Corporate Tax Fundamentals: Comprehensive Training for Business Taxation</a></li>
+                    <li><a href="./US-Taxes-Combo.html">Mastering US Taxes : Individual & Corporate Taxes Essentials</a></li>
+                    <li><a href="./US-Accounting.html">US Accounting Basics to Intermediate : Essential Bookkeeping Training</a></li>
+                    <li><a href="./US-Accounting-Advance.html">US Accounting Mastery: Advanced Accounting Training</a></li>
+                    <li><a href="./US-Accounting-Combo.html">Mastering US Accounts from Basics through Advanced Level</a></li>
+                    <li><a href="./US-Accounting-Tax-Combo.html">Mastering US Taxes & Accounting: Individual, Corporate Taxes & Bookkeeping
+                            Essentials</a></li>
+                </ul>
+            </div>
+        </div>
+        <hr class="footerHR">
+        <div class="footer-bottom">
+            <p>Copyright © 2025 Learn and earn infinite LLP | All rights are reserved to Learn and earn infinite LLP</p>
+            <p>Website Design & Developed with <i class="fa-solid fa-heart"></i> by <a
+                    href="https://www.instagram.com/mstdesignagency/">MST Designs</a></p>
+        </div>
+    </footer>
+    <script src="./script.js"></script>
+</body>
+</html>
