@@ -707,3 +707,101 @@
         z-index: 1000; /* Ensure it appears above the menu */
     }
 }
+
+@media only screen and (max-width: 1025px) {
+    .form-section {
+        margin-top: 3rem;
+    }
+
+    form input, form textarea, form button {
+        width: 46rem;
+    }
+}
+
+@media only screen and (max-width: 814px) {
+    .support-options {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 3rem;
+    }
+
+    .contact-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+@media only screen and (max-width: 794px) {
+    form input, form textarea, form button {
+        width: 40rem;
+    }
+}
+
+@media only screen and (max-width: 698px) {
+    form input, form textarea, form button {
+        width: 35rem;
+    }
+}
+
+@media only screen and (max-width: 615px) {
+    form input, form textarea, form button {
+        width: 28rem;
+    }
+}
+
+@media only screen and (max-width: 566px) {
+    .support-options div {
+        width: 31rem;
+    }
+}
+
+@media only screen and (max-width: 531px) {
+    form input, form textarea, form button {
+        width: 23rem;
+    }
+
+    .support-options div {
+        width: 25rem;
+    }
+}
+
+@media only screen and (max-width: 440px) {
+    form input, form textarea, form button {
+        width: 19rem;
+    }
+
+    .support-options div {
+        width: 21rem;
+    }
+}
+
+@media only screen and (max-width: 381px) {
+    form input, form textarea, form button {
+        width: 16rem;
+    }
+
+    .support-options div {
+        width: 18rem;
+    }
+}
+
+@media only screen and (max-width: 328px) {
+    form input, form textarea, form button {
+        width: 12rem;
+    }
+
+    .support-options div {
+        width: 14rem;
+    }
+
+    .support-options h3 {
+        font-size: 16px;
+    }
+
+    .support-options p {
+        font-size: 14px;
+    }
+}

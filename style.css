@@ -1234,6 +1234,7 @@ li {
 
 .support-options{
   display: flex;
+  flex-wrap: wrap;
   margin-top: 3rem;
 }
 
@@ -1244,6 +1245,9 @@ li {
   border-radius: 5px;
   margin: 15px;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .contact-info {
@@ -1253,7 +1257,7 @@ li {
 }
 
 .form-section {
-  background: #f9f9f9;
+  background: #ecfcff7b;
   padding: 20px;
   border-radius: 8px;
 }
@@ -1308,6 +1312,10 @@ form button {
   font-family: normal;
 }
 
+form input:focus,form textarea:focus{
+  outline: none;
+}
+
 form textarea{
   resize: none;
   height: 20vh;
@@ -1315,9 +1323,11 @@ form textarea{
 }
 
 form button {
-  background: #007bff;
-  color: #fff;
   border: none;
+  border-radius: 5px;
+  font-family: normal;
+  background-color: #03045e;
+  color: white;
   cursor: pointer;
 }
 
