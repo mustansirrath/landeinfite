@@ -6,6 +6,7 @@
 
 body {
     background-color: #1a1a1a;
+    overflow: hidden;
   }
 
   @font-face {
@@ -26,6 +27,7 @@ body {
   .container {
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     height: 100vh;
   }
   
@@ -35,6 +37,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    flex-wrap: wrap;
   }
   
   .left-panel {
@@ -45,6 +48,7 @@ body {
     color: #fff;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
     align-items: center;
   }
   
