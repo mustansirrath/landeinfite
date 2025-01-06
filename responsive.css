@@ -810,3 +810,34 @@
         display: none;
     }
 }
+
+@media only screen and (max-width: 438px) {
+    .form input {
+        width: 21rem;
+    }
+
+    .form-box {
+        padding: 1.5rem;
+    }
+}
+
+
+@media only screen and (max-width: 415px) {
+    .form input {
+        width: 18rem;
+    }
+
+    .heading-form h2 {
+        font-size: 20px;
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width: 345px) {
+    .form input {
+        width: 16rem;
+    }
+    .form input {
+        width: 18rem;
+    }
+}
