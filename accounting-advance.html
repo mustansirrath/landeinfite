@@ -36,7 +36,7 @@
                         <input type="text" id="courseName" name="courseName"
                             value="US Accounting Mastery: Advanced Accounting Training" disabled><br>
                         <label for="coursePrice">Price</label><br>
-                        <input type="text" id="coursePrice" name="coursePrice" value="14,999" disabled>
+                        <input type="text" id="coursePrice" name="coursePrice" value="14999" disabled>
                     </div>
                     <!-- Address Information -->
                     <div class="address-related">
@@ -61,7 +61,8 @@
                         <input type="text" id="referral" name="referral" placeholder="From where you find us?"><br>
                     </div>
                     <div class="button-form">
-                        <button type="submit">Checkout Now&nbsp;&nbsp;<i class="fa-regular fa-credit-card"></i></button>
+                        <button type="button" id="checkoutBtn">Checkout Now&nbsp;&nbsp;<i
+                                class="fa-regular fa-credit-card"></i></button>
                     </div>
                 </form>
             </div>
@@ -75,90 +76,104 @@
 
     <!-- Firebase Configuration -->
     <script src="./FirebaseConfig/firebaseconfig.js"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
     <script>
+        const razorpayKey = "rzp_test_1gkTjsmlul8v8V"; // Replace with your Razorpay Test Key
+
         firebase.auth().onAuthStateChanged(user => {
             if (!user) {
                 window.location.href = 'register.html';
             } else {
-
                 document.querySelector('#emailAddress').value = user.email;
             }
         });
 
-        document.getElementById('enrollForm').addEventListener('submit', async (event) => {
-            event.preventDefault();
+        document.getElementById("checkoutBtn").onclick = async function () {
+    const fullName = document.getElementById("fullName").value;
+    const email = firebase.auth().currentUser.email;
+    const phoneNumber = document.getElementById("phoneNumber").value;
+    const courseName = "US Accounting Mastery: Advanced Accounting Training";
 
-            const email = firebase.auth().currentUser.email;
-            if (!email) {
-                alert('User not logged in.');
-                return;
-            }
+    if (!fullName || !email || !phoneNumber) {
+        alert("Please fill in all required fields before proceeding.");
+        return;
+    }
 
-            const courseName = document.getElementById('courseName').value;
+    try {
+        const db = firebase.firestore();
 
-            const userData = {
-                fullName: document.getElementById('fullName').value,
-                email,
-                phoneNumber: document.getElementById('phoneNumber').value,
-                courseName: "US Accounting Mastery: Advanced Accounting Training",
-                coursePrice: "14,999",
-                address: document.getElementById('address').value,
-                city: document.getElementById('city').value,
-                state: document.getElementById('state').value,
-                country: document.getElementById('country').value,
-                occupation: document.getElementById('occupation').value,
-                purpose: document.getElementById('purpose').value,
-                referralSource: document.getElementById('referral').value,
-            };
+        // Check if the user is already enrolled in the same course
+        const querySnapshot = await db
+            .collection("enrolled_users")
+            .where("email", "==", email)
+            .where("courseName", "==", courseName)
+            .get();
 
-            try {
-                const db = firebase.firestore();
+        if (!querySnapshot.empty) {
+            alert("You are already enrolled in this course!");
+            return; // Stop further processing
+        }
 
-                // Query to check if the user is already enrolled in this course
-                const querySnapshot = await db.collection("enrolled_users")
-                    .where("email", "==", email)
-                    .where("courseName", "==", courseName)
-                    .get();
+        // Proceed with Razorpay payment initialization if the user is not already enrolled
+        const options = {
+            key: razorpayKey,
+            amount: 14999 * 100, // Convert price to paise
+            currency: "INR",
+            name: "USA Accounting Course",
+            description: courseName,
+            image: "https://example.com/logo.png", // Replace with your logo
+            handler: async function (response) {
+                const paymentData = {
+                    fullName,
+                    email,
+                    phoneNumber,
+                    courseName,
+                    coursePrice: "14999",
+                    address: document.getElementById("address").value,
+                    city: document.getElementById("city").value,
+                    state: document.getElementById("state").value,
+                    country: document.getElementById("country").value,
+                    occupation: document.getElementById("occupation").value,
+                    purpose: document.getElementById("purpose").value,
+                    referralSource: document.getElementById("referral").value,
+                    paymentId: response.razorpay_payment_id,
+                    status: "paid"
+                };
 
-                if (!querySnapshot.empty) {
-                    alert("You are already enrolled in this course.");
-                } else {
-                    // Add the user's enrollment data to Firestore
-                    await db.collection("enrolled_users").add(userData);
-                    alert("Successfully enrolled in the course!");
-
-                    // Send data to Formspree via email
-                    const formData = new FormData();
-                    for (const key in userData) {
-                        formData.append(key, userData[key]);
-                    }
-
-                    await fetch("https://formspree.io/f/mrbbolwk", {
-                        method: "POST",
-                        body: formData,
-                    })
-                        .then(response => {
-                            if (!response.ok) {
-                                throw new Error('Error sending email: ' + response.statusText);
-                            }
-                            return response.json();
-                        })
-                        .then(() => {
-                            alert("Enrollment confirmation email sent!");
-                        })
-                        .catch(error => {
-                            console.error("Error sending email:", error);
-                            alert("thank you, you enrolled in this course");
-                        });
+                try {
+                    await db.collection("enrolled_users").add(paymentData);
+                    alert("Payment successful! You have been enrolled in the course.");
+                } catch (error) {
+                    console.error("Error saving payment data:", error);
+                    alert("Payment successful, but an error occurred while saving your data.");
                 }
-            } catch (error) {
-                console.error("Error accessing Firestore: ", error);
-                alert("thank you, you enrolled in this course");
+            },
+            prefill: {
+                name: fullName,
+                email: email,
+                contact: phoneNumber
+            },
+            theme: {
+                color: "#3399cc"
             }
+        };
+
+        const rzp = new Razorpay(options);
+
+        rzp.on("payment.failed", function (response) {
+            alert("Payment failed! Reason: " + response.error.reason);
+            console.error(response.error);
         });
+
+        rzp.open();
+    } catch (error) {
+        console.error("Error checking enrollment:", error);
+        alert("An error occurred while checking your enrollment status. Please try again.");
+    }
+};
+
     </script>
-
-
 </body>
 
 </html>
