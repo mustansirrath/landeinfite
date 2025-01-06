@@ -212,11 +212,13 @@ html {
   margin-bottom: 7px;
   font-size: 15px;
   font-family: bold;
+  text-align: justify;
 }
 
 .courseBox p {
   font-family: normal;
   font-size: 14px;
+  text-align: justify;
 }
 
 .fa-star,
@@ -515,6 +517,7 @@ html {
 
 .visiontext p {
   font-family: normal;
+  text-align: justify;
 }
 
 .visiontext {
@@ -711,6 +714,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .box1 {
