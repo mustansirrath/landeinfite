@@ -547,6 +547,7 @@ html {
 .heading-team h2 {
   font-family: bold;
   font-size: 2rem;
+  color: black;
 }
 
 .team-container {
@@ -605,6 +606,7 @@ html {
 .headInstructor h2 {
   font-family: bold;
   font-size: 2rem;
+  color: black;
 }
 
 .faizan-image {
@@ -722,18 +724,20 @@ a {
   margin: 15px;
   padding: 30px;
   border-radius: 5px;
-  background-color: #90e0ef;
+  background-color: #03045e;
 }
 
 .box1 p {
   font-family: normal;
   font-size: 18px;
+  color: white;
 }
 
 .teach-text h2 {
   font-family: bold;
   font-size: 2rem;
   margin-bottom: 7px;
+  color: black;
 }
 
 .teach-text {
@@ -779,6 +783,7 @@ a {
 .heading-career h2 {
   font-family: bold;
   font-size: 2rem;
+  color: black;
 }
 
 .heading-career {
@@ -801,8 +806,11 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
   font-family: normal;
+}
+
+.careerBox h2{
+  color: white;
 }
 
 .Bookkeeper {
@@ -1391,7 +1399,6 @@ h2 {
   font-size: 1.8rem;
   margin: 20px 0 10px;
   color: #0073e6;
-  border-bottom: 2px solid #0073e6;
   padding-bottom: 5px;
   font-family: heavy;
 }
