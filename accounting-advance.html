@@ -31,10 +31,9 @@
                     </div><br>
                     <!-- Course Information -->
                     <div class="course-related">
-                        <h3>Course Information</h3> 
+                        <h3>Course Information</h3>
                         <label for="courseName">Course Name</label><br>
-                        <input type="text" id="courseName" name="courseName"
-                            value="US Accounting Mastery: Advanced Accounting Training" disabled><br>
+                        <input type="text" id="courseName" name="courseName" value="US Accounting Mastery: Advanced Accounting Training" disabled><br>
                         <label for="coursePrice">Price</label><br>
                         <input type="text" id="coursePrice" name="coursePrice" value="14999" disabled>
                     </div>
@@ -61,8 +60,7 @@
                         <input type="text" id="referral" name="referral" placeholder="From where you find us?"><br>
                     </div>
                     <div class="button-form">
-                        <button type="button" id="checkoutBtn">Checkout Now&nbsp;&nbsp;<i
-                                class="fa-regular fa-credit-card"></i></button>
+                        <button type="button" id="checkoutBtn">Checkout Now&nbsp;&nbsp;<i class="fa-regular fa-credit-card"></i></button>
                     </div>
                 </form>
             </div>
@@ -79,9 +77,7 @@
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
     <script>
-        const razorpayKey = "rzp_test_1gkTjsmlul8v8V"; // Replace with your Razorpay Test Key
-
-        firebase.auth().onAuthStateChanged(user => {
+        firebase.auth().onAuthStateChanged(async (user) => {
             if (!user) {
                 window.location.href = 'register.html';
             } else {
@@ -90,89 +86,116 @@
         });
 
         document.getElementById("checkoutBtn").onclick = async function () {
-    const fullName = document.getElementById("fullName").value;
-    const email = firebase.auth().currentUser.email;
-    const phoneNumber = document.getElementById("phoneNumber").value;
-    const courseName = "US Accounting Mastery: Advanced Accounting Training";
+            const db = firebase.firestore();
+            const user = firebase.auth().currentUser;
 
-    if (!fullName || !email || !phoneNumber) {
-        alert("Please fill in all required fields before proceeding.");
-        return;
-    }
+            if (!user) {
+                alert("Please log in to proceed.");
+                return;
+            }
 
-    try {
-        const db = firebase.firestore();
+            const fullName = document.getElementById("fullName").value;
+            const email = user.email;
+            const phoneNumber = document.getElementById("phoneNumber").value;
 
-        // Check if the user is already enrolled in the same course
-        const querySnapshot = await db
-            .collection("enrolled_users")
-            .where("email", "==", email)
-            .where("courseName", "==", courseName)
-            .get();
+            if (!fullName || !email || !phoneNumber) {
+                alert("All fields are required.");
+                return;
+            }
 
-        if (!querySnapshot.empty) {
-            alert("You are already enrolled in this course!");
-            return; // Stop further processing
-        }
+            const courseName = "US Accounting Mastery: Advanced Accounting Training";
+            const coursePrice = "14999";
 
-        // Proceed with Razorpay payment initialization if the user is not already enrolled
-        const options = {
-            key: razorpayKey,
-            amount: 14999 * 100, // Convert price to paise
-            currency: "INR",
-            name: "USA Accounting Course",
-            description: courseName,
-            image: "https://example.com/logo.png", // Replace with your logo
-            handler: async function (response) {
-                const paymentData = {
-                    fullName,
-                    email,
-                    phoneNumber,
-                    courseName,
-                    coursePrice: "14999",
-                    address: document.getElementById("address").value,
-                    city: document.getElementById("city").value,
-                    state: document.getElementById("state").value,
-                    country: document.getElementById("country").value,
-                    occupation: document.getElementById("occupation").value,
-                    purpose: document.getElementById("purpose").value,
-                    referralSource: document.getElementById("referral").value,
-                    paymentId: response.razorpay_payment_id,
-                    status: "paid"
+            try {
+                // Check if user already has an enrollment
+                const existingEnrollmentQuery = await db.collection("enrollment_attempts")
+                    .where("email", "==", email)
+                    .where("courseName", "==", courseName)
+                    .get();
+
+                let enrollmentDocId = null;
+
+                if (!existingEnrollmentQuery.empty) {
+                    // Use existing enrollment
+                    enrollmentDocId = existingEnrollmentQuery.docs[0].id;
+                    await db.collection("enrollment_attempts").doc(enrollmentDocId).update({
+                        status: "pending",
+                        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                    });
+                } else {
+                    // Create new enrollment
+                    const newEnrollmentRef = await db.collection("enrollment_attempts").add({
+                        fullName,
+                        email,
+                        phoneNumber,
+                        courseName,
+                        coursePrice,
+                        status: "pending",
+                        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                    });
+                    enrollmentDocId = newEnrollmentRef.id;
+                }
+
+                // Retrieve Razorpay API key
+                const configDoc = await db.collection("api_keys").doc("0BF03laooWXibHAwTeDM").get();
+                const razorpayKey = configDoc.exists ? configDoc.data().razorpay_key : null;
+
+                if (!razorpayKey) {
+                    alert("Razorpay API key is missing. Contact support.");
+                    return;
+                }
+
+                // Razorpay payment options
+                const options = {
+                    key: razorpayKey,
+                    amount: coursePrice * 100, // in paise
+                    currency: "INR",
+                    name: "USA Accounting",
+                    description: courseName,
+                    handler: async function (response) {
+                        try {
+                            // Save payment immediately
+                            await db.runTransaction(async (transaction) => {
+                                const enrollmentRef = db.collection("enrollment_attempts").doc(enrollmentDocId);
+                                transaction.update(enrollmentRef, {
+                                    status: "paid",
+                                    paymentId: response.razorpay_payment_id,
+                                    paidAt: firebase.firestore.FieldValue.serverTimestamp()
+                                });
+
+                                // Move to enrolled_users collection
+                                const enrollmentData = (await enrollmentRef.get()).data();
+                                transaction.set(db.collection("enrolled_users").doc(enrollmentDocId), enrollmentData);
+                            });
+
+                            alert("Payment successful! You are now enrolled.");
+                        } catch (error) {
+                            console.error("Error processing payment:", error);
+                            alert("Payment was successful, but there was an error processing your enrollment. Please contact support.");
+                        }
+                    },
+                    prefill: {
+                        name: fullName,
+                        email: email,
+                        contact: phoneNumber
+                    },
+                    theme: {
+                        color: "#3399cc"
+                    }
                 };
 
-                try {
-                    await db.collection("enrolled_users").add(paymentData);
-                    alert("Payment successful! You have been enrolled in the course.");
-                } catch (error) {
-                    console.error("Error saving payment data:", error);
-                    alert("Payment successful, but an error occurred while saving your data.");
-                }
-            },
-            prefill: {
-                name: fullName,
-                email: email,
-                contact: phoneNumber
-            },
-            theme: {
-                color: "#3399cc"
+                const rzp = new Razorpay(options);
+
+                rzp.on("payment.failed", function (response) {
+                    alert("Payment failed. Reason: " + response.error.reason);
+                });
+
+                rzp.open();
+            } catch (error) {
+                console.error("Error processing enrollment:", error);
+                alert("An error occurred. Please try again.");
             }
         };
-
-        const rzp = new Razorpay(options);
-
-        rzp.on("payment.failed", function (response) {
-            alert("Payment failed! Reason: " + response.error.reason);
-            console.error(response.error);
-        });
-
-        rzp.open();
-    } catch (error) {
-        console.error("Error checking enrollment:", error);
-        alert("An error occurred while checking your enrollment status. Please try again.");
-    }
-};
-
     </script>
 </body>
 
