@@ -1034,6 +1034,7 @@ li {
 .description h2 {
   margin-bottom: 10px;
   font-family: heavy;
+  color: black;
 }
 
 .points-course {
@@ -1043,10 +1044,10 @@ li {
 
 .seperate-box {
   background: rgba(0, 0, 0, 0)
-    url("https://ik.imagekit.io/attje3gmi/Learn%20And%20Earn%20Infinite%20LLP/898433_OAICF90.jpg?updatedAt=1735884839505");
+    url("https://res.cloudinary.com/dab2njvcw/image/upload/v1736401773/gradient-blue-abstract-background-smooth-dark-blue-with-black-vignette-studio_rdmrph.jpg");
   background-size: cover;
   background-position: bottom;
-  padding: 20px;
+  padding: 15px;
   margin: 10px 5px;
   border-radius: 5px;
   width: 25rem;
@@ -1097,6 +1098,7 @@ li {
 
 .heading-content h2 {
   font-family: heavy;
+  color: black;
 }
 
 .onecontent {
