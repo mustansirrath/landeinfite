@@ -547,6 +547,7 @@ html {
 .heading-team h2 {
   font-family: bold;
   font-size: 2rem;
+  color: black;
 }
 
 .team-container {
@@ -605,6 +606,7 @@ html {
 .headInstructor h2 {
   font-family: bold;
   font-size: 2rem;
+  color: black;
 }
 
 .faizan-image {
@@ -722,18 +724,20 @@ a {
   margin: 15px;
   padding: 30px;
   border-radius: 5px;
-  background-color: #90e0ef;
+  background-color: #03045e;
 }
 
 .box1 p {
   font-family: normal;
   font-size: 18px;
+  color: white;
 }
 
 .teach-text h2 {
   font-family: bold;
   font-size: 2rem;
   margin-bottom: 7px;
+  color: black;
 }
 
 .teach-text {
@@ -779,6 +783,7 @@ a {
 .heading-career h2 {
   font-family: bold;
   font-size: 2rem;
+  color: black;
 }
 
 .heading-career {
@@ -801,8 +806,11 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
   font-family: normal;
+}
+
+.careerBox h2{
+  color: white;
 }
 
 .Bookkeeper {
@@ -1026,6 +1034,7 @@ li {
 .description h2 {
   margin-bottom: 10px;
   font-family: heavy;
+  color: black;
 }
 
 .points-course {
@@ -1035,10 +1044,10 @@ li {
 
 .seperate-box {
   background: rgba(0, 0, 0, 0)
-    url("https://ik.imagekit.io/attje3gmi/Learn%20And%20Earn%20Infinite%20LLP/898433_OAICF90.jpg?updatedAt=1735884839505");
+    url("https://res.cloudinary.com/dab2njvcw/image/upload/v1736401773/gradient-blue-abstract-background-smooth-dark-blue-with-black-vignette-studio_rdmrph.jpg");
   background-size: cover;
   background-position: bottom;
-  padding: 20px;
+  padding: 15px;
   margin: 10px 5px;
   border-radius: 5px;
   width: 25rem;
@@ -1089,10 +1098,15 @@ li {
 
 .heading-content h2 {
   font-family: heavy;
+  color: black;
 }
 
 .onecontent {
   margin: 15px 0px;
+}
+
+.corporateTaxesh2{
+  color: black;
 }
 
 .onecontent h2 {
@@ -1340,25 +1354,6 @@ form button:hover {
   background: #0056b3;
 }
 
-.location-section {
-  padding: 20px;
-  text-align: center;
-}
-
-.faq-section {
-  padding: 20px;
-  background: #f9f9f9;
-}
-
-.faq-section ul {
-  list-style: none;
-  padding: 0;
-}
-
-.faq-section li {
-  margin-bottom: 10px;
-  color: #333;
-}
 
 /* Responsive Styles */
 @media (max-width: 768px) {
@@ -1369,4 +1364,75 @@ form button:hover {
   .form-section {
       flex: 1 1 100%;
   }
+}
+
+.header {
+  background-color: #03045e;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.header .container h1 {
+  font-size: 2rem;
+  font-family: heavy;
+  color: black;
+}
+
+.header .effective-date {
+  margin-top: 10px;
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+/* Main Content */
+.container {
+  max-width: 1400px;
+  margin: 20px auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.intro-text {
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  color: #555;
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin: 20px 0 10px;
+  color: #0073e6;
+  padding-bottom: 5px;
+  font-family: heavy;
+}
+
+h3 {
+  font-size: 1.4rem;
+  margin: 15px 0 5px;
+  font-family: heavy;
+  color: #444;
+}
+
+.sub-section {
+  margin-bottom: 20px;
+}
+
+ul {
+  margin: 10px 0 20px 20px;
+  list-style-type: disc;
+}
+
+ul li {
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+p {
+  margin-bottom: 15px;
+  font-size: 1rem;
+  color: #555;
+  font-family: normal;
 }
