@@ -107,7 +107,9 @@
             const coursePrice = "14999";
 
             try {
-                // Check if user already has an enrollment
+                // Add a "beforeunload" listener to prevent accidental page reloads or navigation
+                window.addEventListener("beforeunload", preventUnload);
+
                 const existingEnrollmentQuery = await db.collection("enrollment_attempts")
                     .where("email", "==", email)
                     .where("courseName", "==", courseName)
@@ -116,14 +118,12 @@
                 let enrollmentDocId = null;
 
                 if (!existingEnrollmentQuery.empty) {
-                    // Use existing enrollment
                     enrollmentDocId = existingEnrollmentQuery.docs[0].id;
                     await db.collection("enrollment_attempts").doc(enrollmentDocId).update({
                         status: "pending",
                         createdAt: firebase.firestore.FieldValue.serverTimestamp()
                     });
                 } else {
-                    // Create new enrollment
                     const newEnrollmentRef = await db.collection("enrollment_attempts").add({
                         fullName,
                         email,
@@ -136,25 +136,23 @@
                     enrollmentDocId = newEnrollmentRef.id;
                 }
 
-                // Retrieve Razorpay API key
                 const configDoc = await db.collection("api_keys").doc("0BF03laooWXibHAwTeDM").get();
                 const razorpayKey = configDoc.exists ? configDoc.data().razorpay_key : null;
 
                 if (!razorpayKey) {
                     alert("Razorpay API key is missing. Contact support.");
+                    window.removeEventListener("beforeunload", preventUnload);
                     return;
                 }
 
-                // Razorpay payment options
                 const options = {
                     key: razorpayKey,
-                    amount: coursePrice * 100, // in paise
+                    amount: coursePrice * 100,
                     currency: "INR",
                     name: "USA Accounting",
                     description: courseName,
                     handler: async function (response) {
                         try {
-                            // Save payment immediately
                             await db.runTransaction(async (transaction) => {
                                 const enrollmentRef = db.collection("enrollment_attempts").doc(enrollmentDocId);
                                 transaction.update(enrollmentRef, {
@@ -163,7 +161,6 @@
                                     paidAt: firebase.firestore.FieldValue.serverTimestamp()
                                 });
 
-                                // Move to enrolled_users collection
                                 const enrollmentData = (await enrollmentRef.get()).data();
                                 transaction.set(db.collection("enrolled_users").doc(enrollmentDocId), enrollmentData);
                             });
@@ -172,6 +169,8 @@
                         } catch (error) {
                             console.error("Error processing payment:", error);
                             alert("Payment was successful, but there was an error processing your enrollment. Please contact support.");
+                        } finally {
+                            window.removeEventListener("beforeunload", preventUnload);
                         }
                     },
                     prefill: {
@@ -188,14 +187,21 @@
 
                 rzp.on("payment.failed", function (response) {
                     alert("Payment failed. Reason: " + response.error.reason);
+                    window.removeEventListener("beforeunload", preventUnload);
                 });
 
                 rzp.open();
             } catch (error) {
                 console.error("Error processing enrollment:", error);
                 alert("An error occurred. Please try again.");
+                window.removeEventListener("beforeunload", preventUnload);
             }
         };
+
+        function preventUnload(event) {
+            event.preventDefault();
+            event.returnValue = "Are you sure you want to leave? Your payment is in process.";
+        }
     </script>
 </body>
 
