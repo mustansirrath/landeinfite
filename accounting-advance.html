@@ -79,7 +79,8 @@
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script type="text/javascript"
     src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
-</script>
+    </script>
+
     <script>
         emailjs.init("bpIob_yI6tzz5s8po");  // Initialize EmailJS with your private API key
 
@@ -103,8 +104,15 @@
             const fullName = document.getElementById("fullName").value;
             const email = user.email;
             const phoneNumber = document.getElementById("phoneNumber").value;
+            const address = document.getElementById("address").value;
+            const city = document.getElementById("city").value;
+            const state = document.getElementById("state").value;
+            const country = document.getElementById("country").value;
+            const occupation = document.getElementById("occupation").value;
+            const purpose = document.getElementById("purpose").value;
+            const referral = document.getElementById("referral").value;
 
-            if (!fullName || !email || !phoneNumber) {
+            if (!fullName || !email || !phoneNumber || !address || !city || !state || !country) {
                 alert("All fields are required.");
                 return;
             }
@@ -172,10 +180,18 @@
 
                             // Send confirmation email using EmailJS
                             const emailParams = {
-                                to_email: email,
-                                full_name: fullName,
-                                course_name: courseName,
-                                course_price: coursePrice,
+                                email: email,
+                                fullName: fullName,
+                                courseName: courseName,
+                                coursePrice: `₹${coursePrice}`,
+                                phoneNumber: phoneNumber,
+                                address: address,
+                                city: city,
+                                state: state,
+                                country: country,
+                                occupation: occupation,
+                                purpose: purpose,
+                                referral: referral
                             };
 
                             emailjs.send('service_89138zd', 'template_j5t8lc7', emailParams)
