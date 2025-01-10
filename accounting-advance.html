@@ -34,7 +34,8 @@
                     <div class="course-related">
                         <h3>Course Information</h3>
                         <label for="courseName">Course Name</label><br>
-                        <input type="text" id="courseName" name="courseName" value="US Accounting Mastery: Advanced Accounting Training" disabled><br>
+                        <input type="text" id="courseName" name="courseName"
+                            value="US Accounting Mastery: Advanced Accounting Training" disabled><br>
                         <label for="coursePrice">Price</label><br>
                         <input type="text" id="coursePrice" name="coursePrice" value="14999" disabled>
                     </div>
@@ -61,13 +62,14 @@
                         <input type="text" id="referral" name="referral" placeholder="From where you find us?"><br>
                     </div>
                     <div class="button-form">
-                        <button type="button" id="checkoutBtn">Checkout Now&nbsp;&nbsp;<i class="fa-regular fa-credit-card"></i></button>
+                        <button type="button" id="checkoutBtn">Checkout Now&nbsp;&nbsp;<i
+                                class="fa-regular fa-credit-card"></i></button>
                     </div>
                 </form>
             </div>
         </div>
     </section>
-  
+
 
     <!-- Firebase Compatibility Scripts -->
     <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
@@ -77,8 +79,7 @@
     <!-- Firebase Configuration -->
     <script src="./FirebaseConfig/firebaseconfig.js"></script>
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-    <script type="text/javascript"
-    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
     </script>
 
     <script>
@@ -178,7 +179,6 @@
                                 transaction.set(db.collection("enrolled_users").doc(enrollmentDocId), enrollmentData);
                             });
 
-                            // Send confirmation email using EmailJS
                             const emailParams = {
                                 email: email,
                                 fullName: fullName,
@@ -191,7 +191,11 @@
                                 country: country,
                                 occupation: occupation,
                                 purpose: purpose,
-                                referral: referral
+                                referral: referral,
+                                paymentId: response.razorpay_payment_id,  // Payment ID
+                                paymentAmount: `₹${coursePrice}`, // Payment Amount
+                                paymentStatus: "paid", // Payment Status
+                                paidAt: new Date().toLocaleString() // Payment Timestamp
                             };
 
                             emailjs.send('service_89138zd', 'template_j5t8lc7', emailParams)
