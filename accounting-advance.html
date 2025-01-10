@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./responsive.css">
     <script src="https://kit.fontawesome.com/d3d61f5bb0.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <title>USA Accounting - Advanced Course</title>
 </head>
 
@@ -66,6 +67,7 @@
             </div>
         </div>
     </section>
+  
 
     <!-- Firebase Compatibility Scripts -->
     <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
@@ -75,8 +77,12 @@
     <!-- Firebase Configuration -->
     <script src="./FirebaseConfig/firebaseconfig.js"></script>
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-
+    <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
     <script>
+        emailjs.init("bpIob_yI6tzz5s8po");  // Initialize EmailJS with your private API key
+
         firebase.auth().onAuthStateChanged(async (user) => {
             if (!user) {
                 window.location.href = 'register.html';
@@ -107,7 +113,6 @@
             const coursePrice = "14999";
 
             try {
-                // Add a "beforeunload" listener to prevent accidental page reloads or navigation
                 window.addEventListener("beforeunload", preventUnload);
 
                 const existingEnrollmentQuery = await db.collection("enrollment_attempts")
@@ -165,7 +170,22 @@
                                 transaction.set(db.collection("enrolled_users").doc(enrollmentDocId), enrollmentData);
                             });
 
-                            alert("Payment successful! You are now enrolled.");
+                            // Send confirmation email using EmailJS
+                            const emailParams = {
+                                to_email: email,
+                                full_name: fullName,
+                                course_name: courseName,
+                                course_price: coursePrice,
+                            };
+
+                            emailjs.send('service_89138zd', 'template_j5t8lc7', emailParams)
+                                .then((response) => {
+                                    console.log('Email sent successfully:', response);
+                                    alert("Payment successful! You are now enrolled.");
+                                })
+                                .catch((error) => {
+                                    console.error('Error sending email:', error);
+                                });
                         } catch (error) {
                             console.error("Error processing payment:", error);
                             alert("Payment was successful, but there was an error processing your enrollment. Please contact support.");
