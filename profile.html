@@ -209,14 +209,14 @@ button:hover {
         profileDetails.innerHTML = `
             <h2>${userData.firstName} ${userData.lastName || ''}</h2>
             <p>Email: ${userData.email || 'Non-written'}</p>
-            <p>PhoneNumber: ${userData.PhoneNumber}</p>
-            <p>Address: ${userData.Address}</p>
-            <p>City: ${userData.City}</p>
-            <p>State: ${userData.State}</p>
-            <p>PinCode: ${userData.PinCode}</p>
-            <p>Country: ${userData.Country}</p>
-            <p>FathersName: ${userData.FathersName}</p>
-            <p>MothersName: ${userData.MothersName}</p>
+            <p>PhoneNumber: ${userData.PhoneNumber || 'Non-written'}</p>
+            <p>Address: ${userData.Address || 'Non-written'}</p>
+            <p>City: ${userData.City || 'Non-written'}</p>
+            <p>State: ${userData.State || 'Non-written'}</p>
+            <p>PinCode: ${userData.PinCode || 'Non-written'}</p>
+            <p>Country: ${userData.Country || 'Non-written'}</p>
+            <p>FathersName: ${userData.FathersName || 'Non-written'}</p>
+            <p>MothersName: ${userData.MothersName || 'Non-written'}</p>
             <p>EnrolledCourses: ${courses.length > 0 ? courses.join(', ') : 'No enrolled courses'}</p>
             <button onclick="editProfile()">Edit Profile</button>
         `;
