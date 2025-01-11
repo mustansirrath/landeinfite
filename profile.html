@@ -6,12 +6,138 @@
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./responsive.css">
     <script src="https://kit.fontawesome.com/d3d61f5bb0.js" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
     <meta name="description" content="The Best Pan-India Training Institution for Learning Foreign Accounts and Taxes.">
     <meta name="author" content="Learn and Earn Infinite">
     <meta name="language" content="en">
     <meta name="application-name" content="Learn and Earn Infinite">
     <meta name="keywords" content="learn Accounting, Bookkeeping, Tax, US-Accounting, USA Taxes, Professional Accountant, Bookkeeper, QuickBooks, taxation, Learn and Earn Infinite">
     <title>Profile - Learn and Earn Infinite</title>
+
+    <style>
+       /* Style for the profile details and input fields */
+.profile-info {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.profile-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;  /* Two-column layout */
+    gap: 20px;
+    align-items: center;
+}
+
+.profile-details h2 {
+    font-size: 26px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.profile-details p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+label {
+    font-weight: bold;
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+input {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+input:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    margin-top: 15px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.profile-info .save-button {
+    width: auto;  /* For the Save Changes button */
+    margin-top: 20px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .profile-details {
+        grid-template-columns: 1fr;  /* Stack the columns on smaller screens */
+    }
+
+    button {
+        width: auto;
+    }
+}
+
+
+.courses-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+.course-card {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.course-card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333;
+}
+.course-card p {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: #555;
+}
+.course-card button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.course-card button:hover {
+    background-color: #0056b3;
+}
+    </style>
 </head>
 <body>
     <div class="dashboard-container">
@@ -19,9 +145,9 @@
         <nav class="sidebar">
             <h2>Student Dashboard</h2>
             <ul>
-                <li><a href="#" onclick="showSection('profile')" class="active" id="profile-link">Profile</a></li>
-                <li><a href="#" onclick="showSection('courses')">Courses</a></li>
-                <li><a href="#" onclick="showSection('assignments')">Assignments</a></li>
+                <li><a href="#profile" onclick="showSection('profile')" class="active" id="profile-link">Profile</a></li>
+                <li><a href="#courses" onclick="showSection('courses')">Courses</a></li>
+                <li><a href="#assignments" onclick="showSection('assignments')">Assignments</a></li>
                 <hr>
                 <p class="go-back" onclick="history.back()">Go Back&nbsp;&nbsp;<i class="fa-solid fa-chevron-left"></i></p>
             </ul>
@@ -32,66 +158,238 @@
             <h1>Profile</h1>
             <hr>
             <div class="profile-info">
-                <div class="profile-details">
-                    <h2>Mustan Rath</h2>
-                    <p>Email: mst@example.com</p>
-                    <p>Enrolled Courses: Web Development, Graphic Design</p>
-                    <p>Experience: Enthusiastic learner focused on mastering modern web technologies.</p>
+                <div class="profile-details" id="profile-details">
+                    <!-- Profile data will be displayed here -->
                 </div>
+                
             </div>
         </div>
     </div>
 
+    <!-- Firebase Compatibility Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+
+    <!-- Firebase Configuration -->
+    <script src="./FirebaseConfig/firebaseconfig.js"></script>
+
     <script>
-        // Function to dynamically update the content section
-        function showSection(section) {
-            const content = document.getElementById('content');
-            
-            // Clear the current content
-            content.innerHTML = '';
-            
-            // Load content based on section
-            switch (section) {
-                case 'profile':
-                    content.innerHTML = `
-                        <h1>Profile</h1>
-                        <hr>
-                        <div class="profile-info">
-                            <div class="profile-details">
-                                <h2>John Doe</h2>
-                                <p>Email: johndoe@example.com</p>
-                                <p>Enrolled Courses: Web Development, Graphic Design</p>
-                                <p>Experience: Enthusiastic learner focused on mastering modern web technologies.</p>
-                            </div>
-                        </div>
-                    `;
-                    break;
+        // Initialize Firebase
+        // const db = firebase.firestore(); // Firestore
+        const auth = firebase.auth(); // Firebase Auth
 
-                case 'courses':
-                    content.innerHTML = `
-                        <h1>Enrolled Courses</h1>
-                        <hr>
-                        <p>No enrolled course</p>
-                    `;
-                    break;
-
-                case 'assignments':
-                    content.innerHTML = `
-                        <h1>Assignments</h1>
-                        <hr>
-                        <p>No assignments due. Keep learning!</p>
-                    `;
-                    break;
-
-                default:
-                    content.innerHTML = '<h1>Section not found</h1>';
-                    break;
+        // Check if user is logged in
+        firebase.auth().onAuthStateChanged(async (user) => {
+            if (!user) {
+                window.location.href = 'register.html'; // Redirect if not logged in
+            } else {
+                fetchProfileData(user.uid); // Fetch profile data for the logged-in user
             }
+        });
 
-            // Update active link styling
-            document.querySelectorAll('.sidebar ul li a').forEach(link => link.classList.remove('active'));
-            document.getElementById(`${section}-link`).classList.add('active');
+        const fetchProfileData = async (userId) => {
+    try {
+        // User data ko fetch karna
+        const userDoc = await db.collection('users').doc(userId).get();
+        const userData = userDoc.data();
+
+        // User ke enrolled courses ko fetch karna
+        const enrolledCourseDoc = await db.collection('enrolled_users').where("email", "==", userData.email).get();
+        let courses = [];  // Array to hold courses
+
+        // Enrolled courses ko iterate karke unhe array me store karna
+        enrolledCourseDoc.forEach(doc => {
+            const enrolledData = doc.data();
+            courses.push(enrolledData.courseName || 'Non-written');
+        });
+
+        // Profile details ko display karna
+        const profileDetails = document.getElementById('profile-details');
+        profileDetails.innerHTML = `
+            <h2>${userData.firstName} ${userData.lastName || ''}</h2>
+            <p>Email: ${userData.email || 'Non-written'}</p>
+            <p>PhoneNumber: ${userData.PhoneNumber}</p>
+            <p>Address: ${userData.Address}</p>
+            <p>City: ${userData.City}</p>
+            <p>State: ${userData.State}</p>
+            <p>PinCode: ${userData.PinCode}</p>
+            <p>Country: ${userData.Country}</p>
+            <p>FathersName: ${userData.FathersName}</p>
+            <p>MothersName: ${userData.MothersName}</p>
+            <p>EnrolledCourses: ${courses.length > 0 ? courses.join(', ') : 'No enrolled courses'}</p>
+            <button onclick="editProfile()">Edit Profile</button>
+        `;
+    } catch (error) {
+        console.error("Error fetching profile data:", error);
+    }
+};
+
+
+// Function to edit the profile (this will allow users to update the profile info)
+const editProfile = () => {
+    const userId = firebase.auth().currentUser.uid; // Get logged-in user's UID
+    const userDocRef = db.collection('users').doc(userId);
+    const profileDetails = document.getElementById('profile-details');
+    
+    // Get the "Edit Profile" button and hide it
+    const editButton = profileDetails.querySelector('button');
+    if (editButton) {
+        editButton.style.display = 'none'; // Hide the "Edit Profile" button
+    }   
+    
+    // Getting all paragraphs with profile data
+    const profileData = profileDetails.querySelectorAll('p');
+    
+    // Iterate over the profile data and convert each paragraph into an input field
+    profileData.forEach((p) => {
+        const label = document.createElement('label');
+        const input = document.createElement('input');
+        
+        // Extract the text content (value) from each paragraph after the colon
+        const value = p.textContent.replace(/.+: /, '');
+        const fieldName = p.textContent.split(':')[0]; // Extract the field name (e.g., "Phone Number")
+
+        // If the field is email or enrolled course, do not make them editable
+        if (fieldName === 'Email' || fieldName === 'EnrolledCourses') {
+            // Keep the value as text and don't create an input field for these
+            p.textContent = `${fieldName}: ${value === 'Non-written' ? '' : value}`;
+        } else {
+            // Set the label and the input's value
+            label.textContent = fieldName;
+            input.value = value === 'Non-written' ? '' : value; // If the value is 'Non-written', set as empty
+            
+            // Clear the existing paragraph text and append the label and input
+            p.textContent = '';
+            p.appendChild(label);
+            p.appendChild(input);
         }
+    });
+
+    // Create and append the save button
+    const saveButton = document.createElement('button');
+    saveButton.textContent = 'Save Changes';
+    saveButton.onclick = () => saveProfileChanges(userId, profileDetails);
+    profileDetails.appendChild(saveButton);
+};
+
+// Function to save changes (after editing)
+const saveProfileChanges = async (userId, profileDetails) => {
+    const updatedData = {};
+
+    // Get the input fields and extract their values
+    const profileData = profileDetails.querySelectorAll('p');
+    profileData.forEach((p) => {
+        const input = p.querySelector('input');
+        if (input) {
+            const fieldName = p.querySelector('label').textContent; // Get the field name (label)
+            updatedData[fieldName] = input.value; // Store the updated value
+        }
+    });
+
+    try {
+        // Update the profile document with the new values
+        await db.collection('users').doc(userId).update(updatedData);
+
+        alert("Profile updated successfully!");
+        fetchProfileData(userId); // Refresh the profile data after saving
+
+        // After saving, show the "Edit Profile" button again
+        const editButton = document.createElement('button');
+        editButton.textContent = 'Edit Profile';
+        editButton.onclick = editProfile;
+        profileDetails.appendChild(editButton);
+    } catch (error) {
+        console.error("Error updating profile:", error);
+    }
+};
+
+function showSection(section) {
+    const content = document.getElementById('content');
+    
+    // Clear current content
+    content.innerHTML = '';
+    
+    // Load content based on section
+    switch (section) {
+        case 'profile':
+            content.innerHTML = `
+                <h1>Profile</h1>
+                <hr>
+                <div class="profile-info">
+                    <div class="profile-details" id="profile-details">
+                        <!-- Profile data will be displayed here -->
+                    </div>
+                </div>
+            `;
+            const userId = firebase.auth().currentUser.uid;
+            fetchProfileData(userId); // Fetch and display user profile data
+            break;
+
+        case 'courses':
+            content.innerHTML = `
+                <h1>Enrolled Courses</h1>
+                <hr>
+                <div id="courses-list">
+                    <!-- User's enrolled courses will be listed here -->
+                </div>
+            `;
+            fetchEnrolledCourses(); // Fetch and display the enrolled courses
+            break;
+
+        case 'assignments':
+            content.innerHTML = `
+                <h1>Assignments</h1>
+                <hr>
+                <p>No assignments due. Keep learning!</p>
+            `;
+            break;
+
+        default:
+            content.innerHTML = '<h1>Section not found</h1>';
+            break;
+    }
+
+    // Update active link styling
+    document.querySelectorAll('.sidebar ul li a').forEach(link => link.classList.remove('active'));
+    document.getElementById(`${section}-link`).classList.add('active');
+}
+
+// Function to fetch and display enrolled courses with price and timetable button
+async function fetchEnrolledCourses() {
+    const user = firebase.auth().currentUser;
+    if (!user) return;
+    try {
+        const userDoc = await db.collection('users').doc(user.uid).get();
+        const userData = userDoc.data();
+        const enrolledCoursesSnapshot = await db.collection('enrolled_users').where('email', '==', userData.email).get();
+        const coursesList = document.getElementById('courses-list');
+        coursesList.innerHTML = '';
+
+        enrolledCoursesSnapshot.forEach(doc => {
+            const courseData = doc.data();
+            coursesList.innerHTML += `
+                <div class="course-card">
+                    <h3>${courseData.courseName || 'No Course Name'}</h3>
+                    <p>Price: ₹${courseData.coursePrice || 'Not Available'}</p>
+                    <button onclick="viewTimetable('${courseData.courseName}')">View Timetable</button>
+                </div>
+            `;
+        });
+
+        if (enrolledCoursesSnapshot.empty) {
+            coursesList.innerHTML = `<p>No enrolled courses found.</p>`;
+        }
+    } catch (error) {
+        console.error("Error fetching enrolled courses:", error);
+    }
+}
+
+function viewTimetable(courseName) {
+    alert('Viewing timetable for ' + courseName);
+}
+
+
     </script>
 </body>
 </html>
