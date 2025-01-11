@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./responsive.css">
+    <script src="https://kit.fontawesome.com/d3d61f5bb0.js" crossorigin="anonymous"></script>
+    <meta name="description" content="The Best Pan-India Training Institution for Learning Foreign Accounts and Taxes.">
+    <meta name="author" content="Learn and Earn Infinite">
+    <meta name="language" content="en">
+    <meta name="application-name" content="Learn and Earn Infinite">
+    <meta name="keywords" content="learn Accounting, Bookkeeping, Tax, US-Accounting, USA Taxes, Professional Accountant, Bookkeeper, QuickBooks, taxation, Learn and Earn Infinite">
+    <title>Profile - Learn and Earn Infinite</title>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar Menu -->
+        <nav class="sidebar">
+            <h2>Student Dashboard</h2>
+            <ul>
+                <li><a href="#" onclick="showSection('profile')" class="active" id="profile-link">Profile</a></li>
+                <li><a href="#" onclick="showSection('courses')">Courses</a></li>
+                <li><a href="#" onclick="showSection('assignments')">Assignments</a></li>
+                <hr>
+                <p class="go-back" onclick="history.back()">Go Back&nbsp;&nbsp;<i class="fa-solid fa-chevron-left"></i></p>
+            </ul>
+        </nav>
+
+        <!-- Main Content Section -->
+        <div class="profile-section" id="content">
+            <h1>Profile</h1>
+            <hr>
+            <div class="profile-info">
+                <div class="profile-details">
+                    <h2>Mustan Rath</h2>
+                    <p>Email: mst@example.com</p>
+                    <p>Enrolled Courses: Web Development, Graphic Design</p>
+                    <p>Experience: Enthusiastic learner focused on mastering modern web technologies.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to dynamically update the content section
+        function showSection(section) {
+            const content = document.getElementById('content');
+            
+            // Clear the current content
+            content.innerHTML = '';
+            
+            // Load content based on section
+            switch (section) {
+                case 'profile':
+                    content.innerHTML = `
+                        <h1>Profile</h1>
+                        <hr>
+                        <div class="profile-info">
+                            <div class="profile-details">
+                                <h2>John Doe</h2>
+                                <p>Email: johndoe@example.com</p>
+                                <p>Enrolled Courses: Web Development, Graphic Design</p>
+                                <p>Experience: Enthusiastic learner focused on mastering modern web technologies.</p>
+                            </div>
+                        </div>
+                    `;
+                    break;
+
+                case 'courses':
+                    content.innerHTML = `
+                        <h1>Enrolled Courses</h1>
+                        <hr>
+                        <p>No enrolled course</p>
+                    `;
+                    break;
+
+                case 'assignments':
+                    content.innerHTML = `
+                        <h1>Assignments</h1>
+                        <hr>
+                        <p>No assignments due. Keep learning!</p>
+                    `;
+                    break;
+
+                default:
+                    content.innerHTML = '<h1>Section not found</h1>';
+                    break;
+            }
+
+            // Update active link styling
+            document.querySelectorAll('.sidebar ul li a').forEach(link => link.classList.remove('active'));
+            document.getElementById(`${section}-link`).classList.add('active');
+        }
+    </script>
+</body>
+</html>
