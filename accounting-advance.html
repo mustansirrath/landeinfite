@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./responsive.css">
     <script src="https://kit.fontawesome.com/d3d61f5bb0.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <title>USA Accounting - Advanced Course</title>
 </head>
 
@@ -33,7 +34,8 @@
                     <div class="course-related">
                         <h3>Course Information</h3>
                         <label for="courseName">Course Name</label><br>
-                        <input type="text" id="courseName" name="courseName" value="US Accounting Mastery: Advanced Accounting Training" disabled><br>
+                        <input type="text" id="courseName" name="courseName"
+                            value="US Accounting Mastery: Advanced Accounting Training" disabled><br>
                         <label for="coursePrice">Price</label><br>
                         <input type="text" id="coursePrice" name="coursePrice" value="14999" disabled>
                     </div>
@@ -60,12 +62,14 @@
                         <input type="text" id="referral" name="referral" placeholder="From where you find us?"><br>
                     </div>
                     <div class="button-form">
-                        <button type="button" id="checkoutBtn">Checkout Now&nbsp;&nbsp;<i class="fa-regular fa-credit-card"></i></button>
+                        <button type="button" id="checkoutBtn">Checkout Now&nbsp;&nbsp;<i
+                                class="fa-regular fa-credit-card"></i></button>
                     </div>
                 </form>
             </div>
         </div>
     </section>
+
 
     <!-- Firebase Compatibility Scripts -->
     <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
@@ -75,8 +79,12 @@
     <!-- Firebase Configuration -->
     <script src="./FirebaseConfig/firebaseconfig.js"></script>
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
 
     <script>
+        emailjs.init("bpIob_yI6tzz5s8po");  // Initialize EmailJS with your private API key
+
         firebase.auth().onAuthStateChanged(async (user) => {
             if (!user) {
                 window.location.href = 'register.html';
@@ -97,8 +105,15 @@
             const fullName = document.getElementById("fullName").value;
             const email = user.email;
             const phoneNumber = document.getElementById("phoneNumber").value;
+            const address = document.getElementById("address").value;
+            const city = document.getElementById("city").value;
+            const state = document.getElementById("state").value;
+            const country = document.getElementById("country").value;
+            const occupation = document.getElementById("occupation").value;
+            const purpose = document.getElementById("purpose").value;
+            const referral = document.getElementById("referral").value;
 
-            if (!fullName || !email || !phoneNumber) {
+            if (!fullName || !email || !phoneNumber || !address || !city || !state || !country) {
                 alert("All fields are required.");
                 return;
             }
@@ -107,7 +122,8 @@
             const coursePrice = "14999";
 
             try {
-                // Check if user already has an enrollment
+                window.addEventListener("beforeunload", preventUnload);
+
                 const existingEnrollmentQuery = await db.collection("enrollment_attempts")
                     .where("email", "==", email)
                     .where("courseName", "==", courseName)
@@ -116,14 +132,12 @@
                 let enrollmentDocId = null;
 
                 if (!existingEnrollmentQuery.empty) {
-                    // Use existing enrollment
                     enrollmentDocId = existingEnrollmentQuery.docs[0].id;
                     await db.collection("enrollment_attempts").doc(enrollmentDocId).update({
                         status: "pending",
                         createdAt: firebase.firestore.FieldValue.serverTimestamp()
                     });
                 } else {
-                    // Create new enrollment
                     const newEnrollmentRef = await db.collection("enrollment_attempts").add({
                         fullName,
                         email,
@@ -136,25 +150,23 @@
                     enrollmentDocId = newEnrollmentRef.id;
                 }
 
-                // Retrieve Razorpay API key
                 const configDoc = await db.collection("api_keys").doc("0BF03laooWXibHAwTeDM").get();
                 const razorpayKey = configDoc.exists ? configDoc.data().razorpay_key : null;
 
                 if (!razorpayKey) {
                     alert("Razorpay API key is missing. Contact support.");
+                    window.removeEventListener("beforeunload", preventUnload);
                     return;
                 }
 
-                // Razorpay payment options
                 const options = {
                     key: razorpayKey,
-                    amount: coursePrice * 100, // in paise
+                    amount: coursePrice * 100,
                     currency: "INR",
                     name: "USA Accounting",
                     description: courseName,
                     handler: async function (response) {
                         try {
-                            // Save payment immediately
                             await db.runTransaction(async (transaction) => {
                                 const enrollmentRef = db.collection("enrollment_attempts").doc(enrollmentDocId);
                                 transaction.update(enrollmentRef, {
@@ -163,15 +175,42 @@
                                     paidAt: firebase.firestore.FieldValue.serverTimestamp()
                                 });
 
-                                // Move to enrolled_users collection
                                 const enrollmentData = (await enrollmentRef.get()).data();
                                 transaction.set(db.collection("enrolled_users").doc(enrollmentDocId), enrollmentData);
                             });
 
-                            alert("Payment successful! You are now enrolled.");
+                            const emailParams = {
+                                email: email,
+                                fullName: fullName,
+                                courseName: courseName,
+                                coursePrice: `₹${coursePrice}`,
+                                phoneNumber: phoneNumber,
+                                address: address,
+                                city: city,
+                                state: state,
+                                country: country,
+                                occupation: occupation,
+                                purpose: purpose,
+                                referral: referral,
+                                paymentId: response.razorpay_payment_id,  // Payment ID
+                                paymentAmount: `₹${coursePrice}`, // Payment Amount
+                                paymentStatus: "paid", // Payment Status
+                                paidAt: new Date().toLocaleString() // Payment Timestamp
+                            };
+
+                            emailjs.send('service_89138zd', 'template_j5t8lc7', emailParams)
+                                .then((response) => {
+                                    console.log('Email sent successfully:', response);
+                                    alert("Payment successful! You are now enrolled.");
+                                })
+                                .catch((error) => {
+                                    console.error('Error sending email:', error);
+                                });
                         } catch (error) {
                             console.error("Error processing payment:", error);
                             alert("Payment was successful, but there was an error processing your enrollment. Please contact support.");
+                        } finally {
+                            window.removeEventListener("beforeunload", preventUnload);
                         }
                     },
                     prefill: {
@@ -188,14 +227,21 @@
 
                 rzp.on("payment.failed", function (response) {
                     alert("Payment failed. Reason: " + response.error.reason);
+                    window.removeEventListener("beforeunload", preventUnload);
                 });
 
                 rzp.open();
             } catch (error) {
                 console.error("Error processing enrollment:", error);
                 alert("An error occurred. Please try again.");
+                window.removeEventListener("beforeunload", preventUnload);
             }
         };
+
+        function preventUnload(event) {
+            event.preventDefault();
+            event.returnValue = "Are you sure you want to leave? Your payment is in process.";
+        }
     </script>
 </body>
 
