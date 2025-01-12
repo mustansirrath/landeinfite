@@ -810,6 +810,7 @@ a {
 }
 
 .careerBox h2{
+  text-align: center;
   color: white;
 }
 
@@ -1534,4 +1535,8 @@ p {
 .social i:hover{
   background-color: #03045e;
   color: white;
+}
+
+.footer-hr{
+  width: 100%;
 }
