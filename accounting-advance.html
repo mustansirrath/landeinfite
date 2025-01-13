@@ -9,9 +9,50 @@
     <script src="https://kit.fontawesome.com/d3d61f5bb0.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <title>USA Accounting - Advanced Course</title>
+    <style>
+        /* Popup Loading Modal */
+        #loadingModal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #loadingModal .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        #loadingModal .modal-content i {
+            font-size: 50px;
+            color: #3399cc;
+        }
+
+        #loadingModal .modal-content p {
+            margin-top: 10px;
+            font-size: 20px;
+            color: #333;
+        }
+    </style>
 </head>
 
 <body>
+    <!-- Loading Modal -->
+    <div id="loadingModal">
+        <div class="modal-content">
+            <i class="fa fa-spinner fa-spin"></i>
+            <p>Processing, please wait...</p>
+        </div>
+    </div>
+
     <section class="form-container">
         <div class="form-box">
             <div class="heading-form">
@@ -70,7 +111,6 @@
         </div>
     </section>
 
-
     <!-- Firebase Compatibility Scripts -->
     <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
@@ -93,166 +133,184 @@
             }
         });
 
+        function showLoading() {
+            document.getElementById('loadingModal').style.display = 'flex';
+        }
+
+        function hideLoading() {
+            document.getElementById('loadingModal').style.display = 'none';
+        }
+
         document.getElementById("checkoutBtn").onclick = async function () {
-    const db = firebase.firestore();
-    const user = firebase.auth().currentUser;
+            showLoading(); // Show loading modal
+            const db = firebase.firestore();
+            const user = firebase.auth().currentUser;
 
-    if (!user) {
-        alert("Please log in to proceed.");
-        return;
-    }
+            if (!user) {
+                alert("Please log in to proceed.");
+                hideLoading(); // Hide loading modal
+                return;
+            }
 
-    const fullName = document.getElementById("fullName").value;
-    const email = user.email;
-    const phoneNumber = document.getElementById("phoneNumber").value;
-    const address = document.getElementById("address").value;
-    const city = document.getElementById("city").value;
-    const state = document.getElementById("state").value;
-    const country = document.getElementById("country").value;
-    const occupation = document.getElementById("occupation").value;
-    const purpose = document.getElementById("purpose").value;
-    const referral = document.getElementById("referral").value;
+            const fullName = document.getElementById("fullName").value;
+            const email = user.email;
+            const phoneNumber = document.getElementById("phoneNumber").value;
+            const address = document.getElementById("address").value;
+            const city = document.getElementById("city").value;
+            const state = document.getElementById("state").value;
+            const country = document.getElementById("country").value;
+            const occupation = document.getElementById("occupation").value;
+            const purpose = document.getElementById("purpose").value;
+            const referral = document.getElementById("referral").value;
 
-    if (!fullName || !email || !phoneNumber || !address || !city || !state || !country) {
-        alert("All fields are required.");
-        return;
-    }
+            if (!fullName || !email || !phoneNumber || !address || !city || !state || !country) {
+                alert("All fields are required.");
+                hideLoading(); // Hide loading modal
+                return;
+            }
 
-    const courseName = "US Accounting Mastery: Advanced Accounting Training";
-    const coursePrice = "1";
+            const courseName = "US Accounting Mastery: Advanced Accounting Training";
+            const coursePrice = "1";
 
-    try {
-        // Disable any page refreshes or navigation during payment
-        window.addEventListener("beforeunload", preventUnload);
+            try {
+                // Disable any page refreshes or navigation during payment
+                window.addEventListener("beforeunload", preventUnload);
 
-        const existingEnrollmentQuery = await db.collection("enrollment_attempts")
-            .where("email", "==", email)
-            .where("courseName", "==", courseName)
-            .get();
+                const existingEnrollmentQuery = await db.collection("enrollment_attempts")
+                    .where("email", "==", email)
+                    .where("courseName", "==", courseName)
+                    .get();
 
-        let enrollmentDocId = null;
+                let enrollmentDocId = null;
 
-        if (!existingEnrollmentQuery.empty) {
-            enrollmentDocId = existingEnrollmentQuery.docs[0].id;
-            await db.collection("enrollment_attempts").doc(enrollmentDocId).update({
-                status: "pending",
-                createdAt: firebase.firestore.FieldValue.serverTimestamp()
-            });
-        } else {
-            const newEnrollmentRef = await db.collection("enrollment_attempts").add({
-                fullName,
-                email,
-                phoneNumber,
-                courseName,
-                coursePrice,
-                status: "pending",
-                createdAt: firebase.firestore.FieldValue.serverTimestamp()
-            });
-            enrollmentDocId = newEnrollmentRef.id;
-        }
-
-        const configDoc = await db.collection("api_keys").doc("0BF03laooWXibHAwTeDM").get();
-        const razorpayKey = configDoc.exists ? configDoc.data().razorpay_key : null;
-
-        if (!razorpayKey) {
-            alert("Razorpay API key is missing. Contact support.");
-            window.removeEventListener("beforeunload", preventUnload);
-            return;
-        }
-
-        const options = {
-            key: razorpayKey,
-            amount: 1 * 100,
-            currency: "INR",
-            name: "USA Accounting",
-            description: courseName,
-            method: {
-                card: true,
-                upi: true,
-                netbanking: false,
-                wallet: false,
-                emi: false,
-                paylater: false,
-                bank_transfer: false
-            },
-            handler: async function (response) {
-                try {
-                    await db.runTransaction(async (transaction) => {
-                        const enrollmentRef = db.collection("enrollment_attempts").doc(enrollmentDocId);
-                        transaction.update(enrollmentRef, {
-                            status: "paid",
-                            paymentId: response.razorpay_payment_id,
-                            paidAt: firebase.firestore.FieldValue.serverTimestamp()
-                        });
-
-                        const enrollmentData = (await enrollmentRef.get()).data();
-                        transaction.set(db.collection("enrolled_users").doc(enrollmentDocId), enrollmentData);
+                if (!existingEnrollmentQuery.empty) {
+                    enrollmentDocId = existingEnrollmentQuery.docs[0].id;
+                    await db.collection("enrollment_attempts").doc(enrollmentDocId).update({
+                        status: "pending",
+                        createdAt: firebase.firestore.FieldValue.serverTimestamp()
                     });
-
-                    const emailParams = {
-                        email: email,
-                        fullName: fullName,
-                        courseName: courseName,
-                        coursePrice: `₹${coursePrice}`,
-                        phoneNumber: phoneNumber,
-                        address: address,
-                        city: city,
-                        state: state,
-                        country: country,
-                        occupation: occupation,
-                        purpose: purpose,
-                        referral: referral,
-                        paymentId: response.razorpay_payment_id,
-                        paymentAmount: `₹${coursePrice}`,
-                        paymentStatus: "paid",
-                        paidAt: new Date().toLocaleString()
-                    };
-
-                    emailjs.send('service_89138zd', 'template_j5t8lc7', emailParams)
-                        .then((response) => {
-                            console.log('Email sent successfully:', response);
-                            alert("Payment successful! You are now enrolled.");
-                        })
-                        .catch((error) => {
-                            console.error('Error sending email:', error);
-                        });
-                } catch (error) {
-                    console.error("Error processing payment:", error);
-                    alert("Payment was successful, but there was an error processing your enrollment. Please contact support.");
-                } finally {
-                    window.removeEventListener("beforeunload", preventUnload);
+                    hideLoading();
+                } else {
+                    const newEnrollmentRef = await db.collection("enrollment_attempts").add({
+                        fullName,
+                        email,
+                        phoneNumber,
+                        courseName,
+                        coursePrice,
+                        status: "pending",
+                        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                    });
+                    enrollmentDocId = newEnrollmentRef.id;
                 }
-            },
-            prefill: {
-                name: fullName,
-                email: email,
-                contact: phoneNumber
-            },
-            theme: {
-                color: "#3399cc"
+
+                const configDoc = await db.collection("api_keys").doc("0BF03laooWXibHAwTeDM").get();
+                const razorpayKey = configDoc.exists ? configDoc.data().razorpay_key : null;
+
+                if (!razorpayKey) {
+                    alert("Razorpay API key is missing. Contact support.");
+                    window.removeEventListener("beforeunload", preventUnload);
+                    hideLoading(); // Hide loading modal
+                    return;
+                }
+
+                const options = {
+                    key: razorpayKey,
+                    amount: 1 * 100,
+                    currency: "INR",
+                    name: "USA Accounting",
+                    description: courseName,
+                    method: {
+                        card: true,
+                        upi: true,
+                        netbanking: false,
+                        wallet: false,
+                        emi: false,
+                        paylater: false,
+                        bank_transfer: false
+                    },
+                    handler: async function (response) {
+                        try {
+                            await db.runTransaction(async (transaction) => {
+                                const enrollmentRef = db.collection("enrollment_attempts").doc(enrollmentDocId);
+                                transaction.update(enrollmentRef, {
+                                    status: "paid",
+                                    paymentId: response.razorpay_payment_id,
+                                    paidAt: firebase.firestore.FieldValue.serverTimestamp()
+                                });
+
+                                const enrollmentData = (await enrollmentRef.get()).data();
+                                transaction.set(db.collection("enrolled_users").doc(enrollmentDocId), enrollmentData);
+                                showLoading();
+                            });
+
+                            const emailParams = {
+                                email: email,
+                                fullName: fullName,
+                                courseName: courseName,
+                                coursePrice: `₹${coursePrice}`,
+                                phoneNumber: phoneNumber,
+                                address: address,
+                                city: city,
+                                state: state,
+                                country: country,
+                                occupation: occupation,
+                                purpose: purpose,
+                                referral: referral,
+                                paymentId: response.razorpay_payment_id,
+                                paymentAmount: `₹${coursePrice}`,
+                                paymentStatus: "paid",
+                                paidAt: new Date().toLocaleString()
+                            };
+
+                            emailjs.send('service_89138zd', 'template_j5t8lc7', emailParams)
+                                .then((response) => {
+                                    hideLoading();
+                                    console.log('Email sent successfully:', response);
+                                    alert("Payment successful! You are now enrolled.");
+                                })
+                                .catch((error) => {
+                                    console.error('Error sending email:', error);
+                                });
+                        } catch (error) {
+                            console.error("Error processing payment:", error);
+                            alert("Payment was successful, but there was an error processing your enrollment. Please contact support.");
+                        } finally {
+                            hideLoading(); // Hide loading modal
+                            window.removeEventListener("beforeunload", preventUnload);
+                        }
+                    },
+                    prefill: {
+                        name: fullName,
+                        email: email,
+                        contact: phoneNumber
+                    },
+                    theme: {
+                        color: "#3399cc"
+                    }
+                };
+
+                const rzp = new Razorpay(options);
+
+                rzp.on("payment.failed", function (response) {
+                    alert("Payment failed. Reason: " + response.error.reason);
+                    hideLoading(); // Hide loading modal
+                    window.removeEventListener("beforeunload", preventUnload);
+                });
+
+                rzp.open();
+            } catch (error) {
+                console.error("Error processing enrollment:", error);
+                alert("An error occurred. Please try again.");
+                hideLoading(); // Hide loading modal
+                window.removeEventListener("beforeunload", preventUnload);
             }
         };
 
-        const rzp = new Razorpay(options);
-
-        rzp.on("payment.failed", function (response) {
-            alert("Payment failed. Reason: " + response.error.reason);
-            window.removeEventListener("beforeunload", preventUnload);
-        });
-
-        rzp.open();
-    } catch (error) {
-        console.error("Error processing enrollment:", error);
-        alert("An error occurred. Please try again.");
-        window.removeEventListener("beforeunload", preventUnload);
-    }
-};
-
-// Prevent page unload/refresh
-function preventUnload(event) {
-    event.preventDefault();
-    event.returnValue = "Are you sure you want to leave? Your payment is in process.";
-}
+        // Prevent page unload/refresh
+        function preventUnload(event) {
+            event.preventDefault();
+            event.returnValue = "Are you sure you want to leave? Your payment is in process.";
+        }
 
     </script>
 </body>
