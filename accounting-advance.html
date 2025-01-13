@@ -232,6 +232,7 @@
                     handler: async function (response) {
                         try {
                             await db.runTransaction(async (transaction) => {
+                                showLoading();
                                 const enrollmentRef = db.collection("enrollment_attempts").doc(enrollmentDocId);
                                 transaction.update(enrollmentRef, {
                                     status: "paid",
@@ -241,7 +242,7 @@
 
                                 const enrollmentData = (await enrollmentRef.get()).data();
                                 transaction.set(db.collection("enrolled_users").doc(enrollmentDocId), enrollmentData);
-                                showLoading();
+                                
                             });
 
                             const emailParams = {
@@ -265,8 +266,8 @@
 
                             emailjs.send('service_89138zd', 'template_j5t8lc7', emailParams)
                                 .then((response) => {
-                                    hideLoading();
                                     console.log('Email sent successfully:', response);
+                                    hideLoading();
                                     alert("Payment successful! You are now enrolled.");
                                 })
                                 .catch((error) => {
